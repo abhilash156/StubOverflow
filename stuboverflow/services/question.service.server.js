@@ -9,7 +9,7 @@ app.get("/api/questions/top", getTopQuestions);
 // app.get("/api/question", findQuestionByExternalId);
 app.put("/api/question/:questionId", updateQuestion);
 app.delete("/api/question/:questionId", deleteQuestion);
-app.post("/api/question", addComment)
+//app.post("/api/question", addComment);
 
 function createQuestion(request, response) {
     var question = request.body;
@@ -57,10 +57,9 @@ function findQuestionById(request, response) {
 function updateQuestion(request, response) {
     var question = request.body;
     var questionId = request.params.questionId;
-
     questionModel.updateQuestion(questionId, question)
         .then(function () {
-            response.sendStatus(200);
+            response.send(question);
         }, function (error) {
             response.sendStatus(404).error(error);
         });

@@ -15,6 +15,7 @@
         model.getQuestionURL = getQuestionURL;
         model.likeQuestion = likeQuestion;
         model.unLikeQuestion = unLikeQuestion;
+        model.addComment = addComment;
 
         function init() {
 
@@ -62,6 +63,20 @@
                 questionService.unLikeQuestion(model.userId, model.questionId)
                     .then(function (question) {
                         model.liked = !model.liked;
+                    });
+            }
+        }
+
+        function addComment(comment) {
+            if (comment === undefined) {
+                model.errorMessage = "Enter some comment!";
+            } else {
+                var comments = model.questionInfo.comments;
+                comments.push(comment);
+                model.questionInfo.comments = comments;
+                questionService.updateQuestion(model.questionId, model.questionInfo)
+                    .then(function (question) {
+                        $location.url("/question/" + model.questionId + "/details");
                     });
             }
         }
