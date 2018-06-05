@@ -10,11 +10,11 @@
                     <div class="question-title">
                         Title
                         <br>
-                        <input type="text" style="width: 650px"/>
+                        <input type="text" ng-model="model.question.title" style="width: 650px"/>
                     </div>
                     <div class="delta-component"><br>
                         Summary<br>
-                        <div text-angular ng-model="model.widget.text"  id="html"
+                        <div text-angular ng-model="model.question.description"  id="html"
                              ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
                                          ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
                                          ['indent','outdent'],['html']]">

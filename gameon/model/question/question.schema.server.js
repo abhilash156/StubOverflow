@@ -1,7 +1,8 @@
 var mongoose = require("mongoose");
 
 var postSchema = mongoose.Schema({
-    text: String,
+    title: String,
+    description: String,
     viewsCount: String,
     answersCount: String,
     _creator: {type: mongoose.Schema.Types.ObjectId, ref:'UserModel'},

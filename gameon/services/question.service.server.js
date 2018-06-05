@@ -2,7 +2,8 @@ var app = require("../../express");
 
 var questionModel = require("../model/question/question.model.server");
 
-app.question("/api/question", createQuestion);
+app.post("/api/question", createQuestion);
+app.get("/api/questions", getAllQuestions);
 app.get("/api/question/:questionId", findQuestionById);
 // app.get("/api/question", findQuestionByExternalId);
 app.put("/api/question/:questionId", updateQuestion);
@@ -16,6 +17,15 @@ function createQuestion(request, response) {
             response.send(newQuestion);
         }, function (error) {
             response.sendStatus(404).error(error);
+        });
+}
+
+function getAllQuestions(req, res) {
+    questionModel.getAllVenues()
+        .then(function (questions) {
+            res.json(questions);
+        }, function (err) {
+            res.sendStatus(404).send(err);
         });
 }
 

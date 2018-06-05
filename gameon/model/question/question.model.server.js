@@ -8,6 +8,7 @@ require("../models.server");
 
 questionModel.createQuestion = createQuestion;
 // questionModel.findQuestionByExternalId = findQuestionByExternalId;
+questionModel.getAllQuestions = getAllQuestions;
 questionModel.findQuestionById = findQuestionById;
 questionModel.updateQuestion = updateQuestion;
 questionModel.deleteQuestion = deleteQuestion;
@@ -20,6 +21,10 @@ module.exports = questionModel;
 
 function createQuestion(question) {
     return questionModel.create(question);
+}
+
+function getAllQuestions() {
+    return questionModel.find();
 }
 
 function findQuestionById(questionId) {
