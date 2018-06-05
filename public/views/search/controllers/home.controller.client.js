@@ -42,7 +42,7 @@
         }
 
         function getQuestionURL(questionId) {
-            $location.url("/question/" + questionId + "/detail");
+            $location.url("/question/" + questionId + "/details");
         }
 
     }

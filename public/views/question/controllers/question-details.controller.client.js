@@ -1,9 +1,9 @@
 (function () {
     angular
         .module("GameOn")
-        .controller("questionDetailController", questionDetailController);
+        .controller("questionDetailsController", questionDetailsController);
 
-    function questionDetailController($routeParams, questionService, $location, sessionUser) {
+    function questionDetailsController($routeParams, questionService, $location, sessionUser) {
         var model = this;
 
         model.questionId = $routeParams["questionId"];

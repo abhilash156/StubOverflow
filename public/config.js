@@ -21,7 +21,7 @@
             })
             .when("/question/:questionId/details", {
                 templateUrl: "views/question/templates/question-details.view.client.html",
-                controller: "questionDetailController",
+                controller: "questionDetailsController",
                 controllerAs: "model",
                 resolve: {
                     sessionUser: checkLogin
