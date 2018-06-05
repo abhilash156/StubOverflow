@@ -8,15 +8,13 @@
 
         model.questionId = $routeParams["questionId"];
         model.liked = false;
-        model.owned = false;
 
         model.loggedUser = sessionUser;
         model.isAnon = true;
-        model.isSelling = false;
 
-        model.getGameURL = getGameURL;
-        model.likeGame = likeGame;
-        model.unLikeGame = unLikeGame;
+        model.getQuestionURL = getQuestionURL;
+        model.likeQuestion = likeQuestion;
+        model.unLikeQuestion = unLikeQuestion;
 
         function init() {
 
@@ -25,54 +23,44 @@
                 model.isAnon = false;
             }
 
-            questionService.findGameById(model.gameId)
-                .then(function (game) {
-                    model.game = game;
-                    giantBombService.getGameById(game.externalId)
-                        .then(function (gameData) {
-                            model.gameInfo = gameData.results;
-                        });
+            questionService.findQuestionById(model.questionId)
+                .then(function (question) {
+                    console.log(question);
+                    model.questionInfo = question;
                 });
 
             if (!model.isAnon) {
-                questionService.isLiked(model.userId, model.gameId)
+                questionService.isLiked(model.userId, model.questionId)
                     .then(function (value) {
                         model.liked = value;
-                    });
-
-                questionService.isOwned(model.userId, model.gameId)
-                    .then(function (value) {
-                        model.owned = value;
                     });
             }
         }
 
         init();
 
-        function getGameURL(externalId) {
-            questionService.findGameByExternalId(externalId)
-                .then(function (game) {
-                    $location.url("/game/" + game._id + "/detail");
-                });
+        function getQuestionURL(questionId) {
+            $location.url("/question/" + questionId + "/details");
         }
 
-        function likeGame() {
+
+        function likeQuestion() {
             if (model.isAnon) {
                 $location.url("login");
             } else {
-                questionService.likeGame(model.userId, model.gameId)
-                    .then(function (game) {
+                questionService.likeQuestion(model.userId, model.questionId)
+                    .then(function (question) {
                         model.liked = !model.liked;
                     });
             }
         }
 
-        function unLikeGame() {
+        function unLikeQuestion() {
             if (model.isAnon) {
                 $location.url("login");
             } else {
-                questionService.unLikeGame(model.userId, model.gameId)
-                    .then(function (game) {
+                questionService.unLikeQuestion(model.userId, model.questionId)
+                    .then(function (question) {
                         model.liked = !model.liked;
                     });
             }

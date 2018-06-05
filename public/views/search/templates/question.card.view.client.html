@@ -2,8 +2,8 @@
     <div class="question-card">
         <div class="row">
             <div class="col-sm-8">
-                <a ng-click="model.getQuestionURL(cardData.id)" role="button">
-                    <h3 class="delta-object-title-name">{{cardData.question}}</h3></a>
+                <a ng-click="model.getQuestionURL(cardData._id)" role="button">
+                    <h3 class="delta-object-title-name">{{cardData.title}}</h3></a>
             </div>
             <div class="col-sm-4">
                 <div class="col-sm-4">
@@ -15,7 +15,7 @@
                     <div>ANSWERED</div>
                 </div>
                 <div class="col-sm-4">
-                    <div>{{cardData.answersCount}}</div>
+                    <div>{{cardData.answerCount}}</div>
                     <div>ANSWERS</div>
                 </div>
             </div>

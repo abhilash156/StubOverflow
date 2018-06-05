@@ -12,6 +12,7 @@ questionModel.getAllQuestions = getAllQuestions;
 questionModel.findQuestionById = findQuestionById;
 questionModel.updateQuestion = updateQuestion;
 questionModel.deleteQuestion = deleteQuestion;
+questionModel.getTopQuestions = getTopQuestions;
 // questionModel.addPage = addPage;
 // questionModel.removePage = removePage;
 // questionModel.addLike = addLike;
@@ -38,6 +39,10 @@ function updateQuestion(questionId, question) {
 
 function deleteQuestion(gameId) {
    return questionModel.remove({_id: gameId});
+}
+
+function getTopQuestions() {
+    return questionModel.find();
 }
 
 // function findQuestionByExternalId(externalId) {

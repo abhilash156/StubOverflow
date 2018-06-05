@@ -5,6 +5,7 @@ var questionModel = require("../model/question/question.model.server");
 app.post("/api/question", createQuestion);
 app.get("/api/questions", getAllQuestions);
 app.get("/api/question/:questionId", findQuestionById);
+app.get("/api/questions/top", getTopQuestions);
 // app.get("/api/question", findQuestionByExternalId);
 app.put("/api/question/:questionId", updateQuestion);
 app.delete("/api/question/:questionId", deleteQuestion);
@@ -21,13 +22,25 @@ function createQuestion(request, response) {
 }
 
 function getAllQuestions(req, res) {
-    questionModel.getAllVenues()
+    questionModel.getAllQuestions()
         .then(function (questions) {
             res.json(questions);
         }, function (err) {
             res.sendStatus(404).send(err);
         });
 }
+
+
+function getTopQuestions(request, response) {
+    questionModel.getTopQuestions()
+        .then(function (question) {
+            response.send(question);
+        }, function (error) {
+            response.sendStatus(404).error(error);
+        });
+}
+
+
 
 function findQuestionById(request, response) {
     var questionId = request.params.questionId;
