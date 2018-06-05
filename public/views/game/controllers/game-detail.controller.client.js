@@ -54,7 +54,7 @@
         function getGameURL(externalId) {
             gameService.findGameByExternalId(externalId)
                 .then(function (game) {
-                    $location.url("/post/" + game._id + "/detail");
+                    $location.url("/question/" + game._id + "/detail");
                 });
         }
 
@@ -81,7 +81,7 @@
         }
 
         function sellGame() {
-            $location.url("/post/" + model.gameId + "/manage");
+            $location.url("/question/" + model.gameId + "/manage");
         }
 
         function unLikeGame() {

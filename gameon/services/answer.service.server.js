@@ -7,7 +7,7 @@ var answerModel = require("../model/answer/answer.model.server");
 
 // http handlers:
 app.get("/api/answer/:answerId", findAnswerById);
-app.get("/api/answer/post/:postId", findAnswersForPost);
+app.get("/api/answer/question/:postId", findAnswersForPost);
 app.get("/api/answer/user/:userId", findAnswersForUser);
 app.post("/api/answer", createAnswer);
 app.get("/api/answer", findAnswerByCredentials);

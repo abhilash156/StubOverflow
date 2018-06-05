@@ -27,7 +27,7 @@
                     sessionUser: checkLogin
                 }
             })
-            .when("/question/:questionId/new", {
+            .when("/question/new", {
                 templateUrl: "views/question/templates/question-add.view.client.html",
                 controller: "questionAddController",
                 controllerAs: "model",
@@ -75,7 +75,7 @@
                     sessionUser: checkLoginStrict
                 }
             })
-            .when("/post/:gameId/manage", {
+            .when("/question/:gameId/manage", {
                 templateUrl: "views/game/templates/game-manage.view.client.html",
                 controller: "gameManageController",
                 controllerAs: "model",
@@ -83,7 +83,7 @@
                     sessionUser: checkLoginStrict
                 }
             })
-            .when("/post/:gameId/detail", {
+            .when("/question/:gameId/detail", {
                 templateUrl: "views/game/templates/game-detail.view.client.html",
                 controller: "gameDetailController",
                 controllerAs: "model",

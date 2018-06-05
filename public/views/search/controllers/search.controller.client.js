@@ -31,7 +31,7 @@
         function getGameURL(externalId) {
             gameService.findGameByExternalId(externalId)
                 .then(function (game) {
-                    $location.url("/post/" + game._id + "/detail");
+                    $location.url("/question/" + game._id + "/detail");
                 });
         }
     }
