@@ -2,7 +2,8 @@
     <div class="question-card">
         <div class="row">
             <div class="col-sm-8">
-                <div><h3>{{cardData.question}}</h3></div>
+                <a ng-click="model.getQuestionURL(cardData.id)" role="button">
+                    <h3 class="delta-object-title-name">{{cardData.question}}</h3></a>
             </div>
             <div class="col-sm-4">
                 <div class="col-sm-4">
