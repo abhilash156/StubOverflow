@@ -19,6 +19,22 @@
                     sessionUser: checkLogin
                 }
             })
+            .when("/question/:questionId/details", {
+                templateUrl: "views/question/templates/question-details.view.client.html",
+                controller: "questionDetailsController",
+                controllerAs: "model",
+                resolve: {
+                    sessionUser: checkLogin
+                }
+            })
+            .when("/question/:questionId/new", {
+                templateUrl: "views/question/templates/question-add.view.client.html",
+                controller: "questionAddController",
+                controllerAs: "model",
+                resolve: {
+                    sessionUser: checkLogin
+                }
+            })
             .when("/login", {
                 templateUrl: "./views/user/templates/login.view.client.html",
                 controller: "loginController",

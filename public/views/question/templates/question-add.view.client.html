@@ -1,0 +1,39 @@
+<div class="delta-content">
+    <div class="delta-navbar-top">
+        <ng-include src="'views/common/templates/navbar-top.view.client.html'">
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-1 col-md-2"></div>
+            <div class="col-xs-10 col-lg-8 col-md-8">
+                <form>
+                    <div class="question-title">
+                        Title
+                        <br>
+                        <input type="text" style="width: 650px"/>
+                    </div>
+                    <div class="delta-component"><br>
+                        Summary<br>
+                        <div text-angular ng-model="model.widget.text"  id="html"
+                             ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+                                         ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+                                         ['indent','outdent'],['html']]">
+                        </div>
+                        <p ng-bind-html="model.widget.text"></p>
+                    </div>
+                    <hr>
+                    <div class="tag-input">
+                        Tags<br>
+                        <tags-input ng-model="tags"></tags-input>
+                    </div>
+                </form>
+                <br>
+                <br>
+                <a class="btn btn-success" type="button" href="#">
+                    <h5 class="delta-inline-block hidden-xs">Post Question</h5>
+                </a>
+            </div>
+            <div class="col-xs-1 col-md-2"></div>
+        </div>
+    </div>
+</div>

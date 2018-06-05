@@ -1,3 +1,3 @@
 (function () {
-    angular.module("GameOn", ["ngRoute", "textAngular"]);
+    angular.module("GameOn", ["ngRoute", "textAngular", "ngTagsInput"]);
 })();
