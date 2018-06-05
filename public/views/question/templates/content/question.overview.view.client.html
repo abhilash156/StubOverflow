@@ -24,7 +24,7 @@
                     <a type="button" onClick="showCommentBox()">
                         add comment
                     </a>
-                    <div class="hidden" id="comment">
+                    <div id="comment" ng-show="hello" class="ng-cloak">
                         <p>Comments and suggestions:<br>
                             <textarea ng-model="commentBox" name="comments" rows="5" cols="75"></textarea><br>
                             <input type="submit" value="submit" ng-click="model.addComment(commentBox)">
@@ -32,8 +32,8 @@
                     </div>
                 </div>
                 <div class="delta-top-questions">
-                    <ul class="list-group" ng-repeat="comment in model.questionInfo.comments">
-                        <li class="list-group-item">
+                    <ul class="list-group" ng-repeat="comment in model.questionInfo.comments track by (model.questionInfo.questionId + + $index)">
+                        <li class="list-group-item" style="background-color:#D3D3D3">
                             {{comment}}
                             <ng-include src="'views/search/templates/comment-view.client.html'"></ng-include>
                         </li>
@@ -44,11 +44,6 @@
                         var box = document.getElementById('comment');
                         box.className = 'visible'
                     }
-
-                    function removeCommentBox() {
-                        var box = document.getElementById('comment');
-                            box.className = 'hidden'
-                        }
                 </script>
 
                 <hr>
@@ -66,7 +61,7 @@
                     </div>
                     <p ng-bind-html="model.widget.text"></p>
                 </div>
-                <a class="btn btn-success" type="button" href="#">
+                <a class="btn btn-success" type="button" ng-click="model.createAnswer(model.answer)" href="#">
                     <h5 class="delta-inline-block hidden-xs">Post Answer</h5>
                 </a>
             </div>

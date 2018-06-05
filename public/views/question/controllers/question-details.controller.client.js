@@ -69,7 +69,7 @@
 
         function addComment(comment) {
             if (comment === undefined) {
-                model.errorMessage = "Enter some comment!";
+                alert("Enter some comment!");
             } else {
                 var comments = model.questionInfo.comments;
                 comments.push(comment);
@@ -78,6 +78,8 @@
                     .then(function (question) {
                         $location.url("/question/" + model.questionId + "/details");
                     });
+                var t = document.getElementById("comment");
+                t.className = 'hidden'
             }
         }
     }

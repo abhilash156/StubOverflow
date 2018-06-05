@@ -1,0 +1,108 @@
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 5px;
+        text-align: left;
+    }
+</style>
+<script>
+    function myFunction() {
+        // Declare variables
+        var input, filter, table, tr, td, i;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+<div class="delta-content">
+    <div class="delta-navbar-top">
+        <ng-include src="'views/common/templates/navbar-top-anon.view.client.html'">
+    </div>
+    <div class="container-fluid">
+        <p class="delta-home-margin-top"></p>
+        <div class="row">
+            <div class="col-xs-1 col-md-2"></div>
+            <div class="col-xs-10 col-lg-8 col-md-8">
+                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by domain name.."><br><br>
+                <table style="width:100%" id="myTable">
+                    <tr>
+                        <th>Domain</th>
+                        <th colspan="2" align="center">Links</th>
+                    </tr>
+                    <tr>
+                        <td>SEM-PLAT</td>
+                        <td><a href="">https://wiki.corp.ebay.somethin//</a></td>
+                    </tr>
+                    <tr>
+                        <td>CRM</td>
+                        <td><a href="">https://wiki.corp.ebay.somethin//</a></td>
+                    </tr>
+                    <tr>
+                        <td>SEM-BID</td>
+                        <td><a href="">https://wiki.corp.ebay.somethin//</a></td>
+                    </tr>
+                    <tr>
+                        <td>MARKET-PLACE-DYNAMICS</td>
+                        <td><a href="">https://wiki.corp.ebay.somethin//</a></td>
+                    </tr>
+                    <tr>
+                        <td>BID-DATA-OPS</td>
+                        <td><a href="">https://wiki.corp.ebay.somethin//</a></td>
+                    </tr>
+                    <tr>
+                        <td>BIG-DATA-PLATFORM</td>
+                        <td><a href="">https://wiki.corp.ebay.somethin//</a></td>
+                    </tr>
+                    <tr>
+                        <td>STUB-TEX</td>
+                        <td><a href="">https://wiki.corp.ebay.somethin//</a></td>
+                    </tr>
+                    <tr>
+                        <td>STUB-CORP</td>
+                        <td><a href="">https://wiki.corp.ebay.somethin//</a></td>
+                    </tr>
+                    <tr>
+                        <td>TEAM-NAME</td>
+                        <td><a href="">https://wiki.corp.ebay.somethin//</a></td>
+                    </tr>
+                    <tr>
+                        <td>TEAM-NAME</td>
+                        <td><a href="">https://wiki.corp.ebay.somethin//</a></td>
+                    </tr>
+                    <tr>
+                        <td>TEAM-NAME</td>
+                        <td><a href="">https://wiki.corp.ebay.somethin//</a></td>
+                    </tr>
+                    <tr>
+                        <td>TEAM-NAME</td>
+                        <td><a href="">https://wiki.corp.ebay.somethin//</a></td>
+                    </tr>
+                    <tr>
+                        <td>TEAM-NAME</td>
+                        <td><a href="">https://wiki.corp.ebay.somethin//</a></td>
+                    </tr>
+                    <tr>
+                        <td>TEAM-NAME</td>
+                        <td><a href="">https://wiki.corp.ebay.somethin//</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

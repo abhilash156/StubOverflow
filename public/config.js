@@ -35,6 +35,22 @@
                     sessionUser: checkLogin
                 }
             })
+            .when("/quicklinks", {
+                templateUrl: "views/quicklinks/templates/quicklink-view.client.html",
+                controller: "questionAddController",
+                controllerAs: "model",
+                resolve: {
+                    sessionUser: checkLogin
+                }
+            })
+            .when("/howtos", {
+                templateUrl: "views/howtos/templates/howto-view.client.html",
+                controller: "questionAddController",
+                controllerAs: "model",
+                resolve: {
+                    sessionUser: checkLogin
+                }
+            })
             .when("/login", {
                 templateUrl: "./views/user/templates/login.view.client.html",
                 controller: "loginController",

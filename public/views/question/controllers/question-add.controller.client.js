@@ -20,7 +20,7 @@
             } else {
                 questionService.createQuestion(question)
                     .then(function (question) {
-                        $location.url("/question/" + question._id + "/detail");
+                        $location.url("#!/");
                     });
             }
         }

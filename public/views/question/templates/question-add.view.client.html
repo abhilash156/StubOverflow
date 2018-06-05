@@ -4,6 +4,8 @@
     </div>
     <div class="container-fluid">
         <div class="row">
+            <br>
+            <Br>
             <div class="col-xs-1 col-md-2"></div>
             <div class="col-xs-10 col-lg-8 col-md-8">
                 <div ng-show="model.errorMessage" class="alert alert-danger">
@@ -11,12 +13,12 @@
                 </div>
                 <form>
                     <div class="question-title">
-                        Title
+                        <b>Title</b>
                         <br>
-                        <input type="text" ng-model="model.question.title" style="width: 650px"/>
+                        <input type="text" ng-model="model.question.title" style="width: 650px" placeholder="Whats your question? Please be specific"/>
                     </div>
                     <div class="delta-component"><br>
-                        Description<br>
+                        <b>Description</b><br>
                         <div text-angular ng-model="model.question.description"  id="html"
                              ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
                                          ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
@@ -26,14 +28,14 @@
                     </div>
                     <hr>
                     <div class="tag-input">
-                        Tags<br>
-                        <tags-input ng-model="tags"></tags-input>
+                        <b>Tags</b><br>
+                        <tags-input ng-model="tags" placeholder="at least one tag such as (iOS excel html) max 5 tags"></tags-input>
                     </div>
                 </form>
                 <br>
                 <br>
                 <a class="btn btn-success"
-                   ng-click="model.createQuestion(model.question)"><h5 class="delta-inline-block hidden-xs">Post Question</h5></a>
+                   ng-click="model.createQuestion(model.question)" href="/"><h5 class="delta-inline-block hidden-xs">Post Your Question</h5></a>
             </div>
             <div class="col-xs-1 col-md-2"></div>
         </div>

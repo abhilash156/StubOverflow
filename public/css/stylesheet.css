@@ -1,14 +1,14 @@
 body {
-    background: #E9EBEE;
+    /*background: #E9EBEE;*/
     padding-top: 60px;
     padding-bottom: 60px;
 }
 
 .question-card {
-    padding-top: 4px;
-    padding-bottom: 4px;
-    background-color: #f6f9fb;
-    height: 72px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    /*background-color: #f6f9fb;*/
+    height: 64px;
 }
 
 .comment_box{
@@ -20,6 +20,21 @@ body {
     padding-left:20px;
     padding-top:25px;
     padding-bottom:10px;
+}
+
+.view-answer{
+    font-size: 12px;
+    font-weight: 300;
+    color: #6a737c;
+    margin-bottom: 2px;
+}
+
+.question-hyperlink {
+    font-size: 16px;
+    font-weight: 400;
+    color: #07C;
+    line-height: 1.0;
+    margin-bottom: 1.2em;
 }
 
 a:hover {
@@ -39,7 +54,7 @@ a:hover {
 }
 
 .navbar-default {
-    background-color: #00838f;
+    background-color: #260354;
     border-color: #006064;
 }
 
@@ -185,6 +200,15 @@ a:hover {
     border-radius: 5px;
 }
 
+.subheader h1 {
+    color: #242729;
+    font-size: 20px;
+    padding-left: 0;
+    margin-bottom: 0px;
+    line-height: 2.22;
+    border-bottom: 1px solid #eff0f1;
+}
+
 .delta-navbar-logo {
     font-weight: 600;
     color: #FFFFFF;
@@ -233,6 +257,11 @@ a:hover {
 .list-group-item {
     border: none;
 }
+.list-group {
+    padding-left: 0;
+    margin-bottom: 0px;
+    border-bottom: 1px solid #eff0f1;
+}
 
 .delta-vertical-separator {
     border-right: solid 1px;
@@ -274,4 +303,8 @@ a:hover {
 .delta-list-image {
     display: block;
     margin: auto;
+}
+
+#button-top {
+    background-color: #d94185;
 }

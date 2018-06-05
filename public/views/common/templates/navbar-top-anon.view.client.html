@@ -1,12 +1,15 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="delta-navbar-user">
-            <div class="row">
-                <div class="col-xs-2">
+            <div class="row" id="header-color">
+                <div class="col-xs-3">
                     <a class="delta-navbar-logo btn" href="/">
-                        <img src="" class="delta-navbar-userpic" alt="">
-                        <h5 class="delta-inline-block hidden-xs">StubOverFlow</h5>
+                        <img src="../../../images/stubhublogo.png" style="height : 45px; width: 106px">
+                        <!--<h5 class="delta-inline-block hidden-xs">StubOverFlow</h5>-->
                     </a>
+                    <a class="delta-navbar-logo btn" href="#!/quicklinks">
+                        <h5 class="delta-inline-block hidden-xs">Quick-Links</h5></a>
+                    <a class="delta-navbar-logo btn" href="#!/howtos"><h5 class="delta-inline-block hidden-xs">How-Tos</h5></a>
                 </div>
                 <div class="col-xs-1 pull-right">
                     <a ng-show="model.loggedUser" class="delta-navbar-username pull-right" href="#!/profile">
@@ -14,13 +17,13 @@
                         <h6 class="delta-inline-block hidden-xs">{{model.loggedUser.username}}</h6>
                     </a>
 
-                    <a ng-show="!model.loggedUser" href="#!/login" class="btn btn-success pull-right" type="button">
+                    <a ng-show="!model.loggedUser" href="#!/login" class="btn btn-success pull-right" style="background-color:#d94185; border-color: #d94185;" type="button">
                         <span class="fa fa-sign-in"></span>
                         <h5 class="delta-inline-block hidden-xs">Login</h5>
                     </a>
                 </div>
                 <div class="col-xs-1 pull-right">
-                    <a class="btn btn-success pull-right" type="button" href="#!/question/new">
+                    <a class="btn btn-success pull-right" type="button" style="background-color:#d94185; border-color: #d94185;" href="#!/question/new">
                         <h5 class="delta-inline-block hidden-xs">Ask Question</h5>
                     </a>
                 </div>
