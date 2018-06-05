@@ -1,4 +1,3 @@
-(function () {
     angular.module("StubOverflow").factory("gameService", gameService);
 
     function gameService($http, giantBombService) {
