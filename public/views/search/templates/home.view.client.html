@@ -7,17 +7,6 @@
         <div class="row">
             <div class="col-xs-1 col-md-2"></div>
             <div class="col-xs-10 col-lg-8 col-md-8">
-                <img src="https://raw.githubusercontent.com/abhilash156/GameOn/master/public/images/GameOn.png"
-                     class="img-responsive delta-list-image" alt="" width="30%">
-                <div class="input-group">
-                    <input ng-keyup="$event.keyCode == 13 && model.search(searchText)" ng-model="searchText"
-                           type="text" class="form-control" placeholder="Search">
-                    <span class="input-group-btn">
-                        <a href="#!/search?q={{searchText}}" class="btn btn-default" type="button">
-                            <span class="glyphicon glyphicon-search"></span></a>
-                        </span>
-                </div>
-
                 <div class="delta-top-questions">
                     <ul class="list-group" ng-repeat="cardData in model.topPosts">
                         <li class="list-group-item">

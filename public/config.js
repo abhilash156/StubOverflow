@@ -29,7 +29,7 @@
             })
             .when("/question/:questionId/new", {
                 templateUrl: "views/question/templates/question-add.view.client.html",
-                controller: "questionDetailController",
+                controller: "questionAddController",
                 controllerAs: "model",
                 resolve: {
                     sessionUser: checkLogin
