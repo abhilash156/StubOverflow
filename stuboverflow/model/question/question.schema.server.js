@@ -7,7 +7,8 @@ var postSchema = mongoose.Schema({
     answersCount: String,
     _creator: {type: mongoose.Schema.Types.ObjectId, ref:'UserModel'},
     dateCreated: {type: Date, default: Date.now},
-    comments: [String]
+    comments: [String],
+    answers: [String]
 }, {collection: "question"});
 
 module.exports = postSchema;

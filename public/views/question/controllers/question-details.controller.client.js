@@ -16,6 +16,7 @@
         model.likeQuestion = likeQuestion;
         model.unLikeQuestion = unLikeQuestion;
         model.addComment = addComment;
+        model.addAnswer = addAnswer;
 
         function init() {
 
@@ -78,8 +79,24 @@
                     .then(function (question) {
                         $location.url("/question/" + model.questionId + "/details");
                     });
-                var t = document.getElementById("comment");
-                t.className = 'hidden'
+                var commentBox = document.getElementById("comment");
+                commentBox.className = 'hidden'
+            }
+        }
+
+        function addAnswer(answer) {
+            if (answer === undefined) {
+                alert("Enter some comment!");
+            } else {
+                var answers = model.questionInfo.answers;
+                answers.push(answer);
+                model.questionInfo.answers = answers;
+                questionService.updateQuestion(model.questionId, model.questionInfo)
+                    .then(function (question) {
+                        $location.url("/question/" + model.questionId + "/details");
+                    });
+                var answerBox = document.getElementById("answer");
+                answerBox.className = 'visible'
             }
         }
     }

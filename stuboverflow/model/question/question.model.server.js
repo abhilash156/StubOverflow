@@ -14,6 +14,7 @@ questionModel.updateQuestion = updateQuestion;
 questionModel.deleteQuestion = deleteQuestion;
 questionModel.getTopQuestions = getTopQuestions;
 questionModel.addComment = addComment;
+questionModel.addUserAnswer = addUserAnswer;
 
 module.exports = questionModel;
 
@@ -54,3 +55,12 @@ function addComment(questionId, commented) {
             return question.save();
         })
 }
+
+function addUserAnswer(questionId, answer) {
+    return questionModel.findById(questionId)
+        .then(function (question) {
+            question.comment.push(answer);
+            return question.save();
+        })
+}
+
