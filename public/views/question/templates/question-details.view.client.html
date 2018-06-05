@@ -19,31 +19,12 @@
                             <div class="delta-object-buttons">
                                 <div ng-hide="model.loggedUser.isAdmin" ng-switch="model.liked">
                                     <div ng-switch-when=false>
-                                        <a role="button" class="btn btn-success btn-sm"
-                                           ng-click="model.likeGame()">Like</a>
+                                        <b>User Name</b>
+                                        <p>Team</p>
                                     </div>
                                     <div ng-switch-when=true>
-                                        <a role="button" class="btn btn-danger btn-sm"
-                                           ng-click="model.unLikeGame()">Dislike</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="delta-object-buttons">
-                                <div ng-hide="model.loggedUser.isAdmin || model.loggedUser.isSeller">
-                                    <div ng-switch="model.owned">
-                                        <div ng-switch-when=false>
-                                            <a role="button" class="btn btn-primary btn-sm"
-                                               ng-click="model.buyGame()">Buy Game</a>
-                                        </div>
-                                        <div ng-switch-when=true>
-                                            <h5 class="delta-object-text"><i>You own this game!</i></h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div ng-show="model.loggedUser.isSeller">
-                                    <div>
-                                        <a role="button" class="btn btn-primary btn-sm"
-                                           ng-click="model.sellGame()">Game Inventory</a>
+                                        <p>User Name</p>
+                                        <p>Team</p>
                                     </div>
                                 </div>
                             </div>
@@ -51,10 +32,7 @@
                                 <ul class="nav">
                                     <li class="active">
                                         <a href="#"><i class="glyphicon glyphicon-home"></i>
-                                            Overview </a>
-                                    </li>
-                                    <li ng-hide=true>
-                                        <a href="#"><i class="fa fa-gamepad"></i>Gameplay </a>
+                                            See Profile </a>
                                     </li>
                                 </ul>
                             </div>
