@@ -7,14 +7,11 @@
             <div class="col-xs-1 col-md-2"></div>
             <div class="col-xs-10 col-lg-8 col-md-8">
                 <div class="question-title">
-                    Title
-                    <br>
-                    <p>{{model.questionId}}</p>
+                    <h3>{{model.questionInfo.title}}</h3>
                 </div>
                 <div class="delta-component"><br>
-                    Summary<br>
-                    <div class="display-quesiton">
-                        {{question.description}}
+                    Description<br>
+                    <div class="display-quesiton" ng-bind-html="model.questionInfo.description">
                     </div>
                 </div>
                 <hr>
@@ -23,19 +20,34 @@
                     Some Tags Here
                 </div>
                 <br><br>
-                <div class = "add answer">
-                    <a type="button" href="#">
-                       add comment
+                <div class="add answer">
+                    <a type="button" onClick="showCommentBox()">
+                        add comment
                     </a>
+                    <div class="hidden" id="comment">
+                        <p>Comments and suggestions:<br>
+                            <textarea name="comments" rows="5" cols="75"></textarea><br>
+                            <input type="submit" value="submit">
+                        </p>
+                    </div>
                 </div>
+                <script type="text/javascript">
+                    function showCommentBox() {
+                        var box = document.getElementById('comment');
+                        box.className = 'visible'
+
+                    }
+                </script>
+
                 <hr>
                 <div>
-                    <p>Know someone who can answer? Share a link to this question via email, Google+, Twitter, or Facebook.
+                    <p>Know someone who can answer? Share a link to this question via email, Google+, Twitter, or
+                        Facebook.
                     </p>
                     <h3>Your Answer</h3>
                 </div>
                 <div class="delta-component"><br>
-                    <div text-angular ng-model="model.question.description"  id="html"
+                    <div text-angular ng-model="model.question.description" id="html"
                          ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
                                          ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
                                          ['indent','outdent'],['html']]">
