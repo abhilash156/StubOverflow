@@ -13,10 +13,7 @@ questionModel.findQuestionById = findQuestionById;
 questionModel.updateQuestion = updateQuestion;
 questionModel.deleteQuestion = deleteQuestion;
 questionModel.getTopQuestions = getTopQuestions;
-// questionModel.addPage = addPage;
-// questionModel.removePage = removePage;
-// questionModel.addLike = addLike;
-// questionModel.removeLike = removeLike;
+questionModel.addComment = addComment;
 
 module.exports = questionModel;
 
@@ -50,36 +47,10 @@ function getTopQuestions() {
 //     return questionModel.findOne({"externalId": externalId});
 // }
 
-// function addPage(gameId, pageId) {
-//     return questionModel.findById(gameId)
-//         .then(function (game) {
-//             game.pages.push(pageId);
-//             return game.save();
-//         })
-// }
-
-// function removePage(gameId, pageId) {
-//     return questionModel.findById(gameId)
-//         .then(function (game) {
-//             var index = game.pages.indexOf(pageId);
-//             game.pages.splice(index, 1);
-//             return game.save();
-//         })
-// }
-
-// function addLike(gameId, userId) {
-//     return questionModel.findById(gameId)
-//         .then(function (game) {
-//             game.likes.push(userId);
-//             return game.save();
-//         })
-// }
-//
-// function removeLike(gameId, userId) {
-//     return questionModel.findById(gameId)
-//         .then(function (game) {
-//             var index = game.pages.indexOf(userId);
-//             game.likes.splice(index, 1);
-//             return game.save();
-//         })
-// }
+function addComment(questionId, commented) {
+    return questionModel.findById(questionId)
+        .then(function (question) {
+            question.comment.push(commented);
+            return question.save();
+        })
+}

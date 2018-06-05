@@ -27,16 +27,27 @@
                     <div class="hidden" id="comment">
                         <p>Comments and suggestions:<br>
                             <textarea name="comments" rows="5" cols="75"></textarea><br>
-                            <input type="submit" value="submit">
+                            <input type="submit" value="submit" ng-click="model.addComment(model.question, model.question.questionId, model.question.comment)">
                         </p>
                     </div>
+                </div>
+                <div class="delta-top-questions">
+                    <ul class="list-group" ng-repeat="comments in question.comment">
+                        <li class="list-group-item">
+                            <ng-include src="'views/search/templates/comment-view.client.html'"></ng-include>
+                        </li>
+                    </ul>
                 </div>
                 <script type="text/javascript">
                     function showCommentBox() {
                         var box = document.getElementById('comment');
                         box.className = 'visible'
-
                     }
+
+                    function removeCommentBox() {
+                        var box = document.getElementById('comment');
+                            box.className = 'hidden'
+                        }
                 </script>
 
                 <hr>

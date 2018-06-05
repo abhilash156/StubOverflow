@@ -9,6 +9,7 @@ app.get("/api/questions/top", getTopQuestions);
 // app.get("/api/question", findQuestionByExternalId);
 app.put("/api/question/:questionId", updateQuestion);
 app.delete("/api/question/:questionId", deleteQuestion);
+app.post("/api/question", addComment)
 
 function createQuestion(request, response) {
     var question = request.body;
