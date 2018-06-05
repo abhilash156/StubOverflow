@@ -17,8 +17,6 @@
         model.getGameURL = getGameURL;
         model.likeGame = likeGame;
         model.unLikeGame = unLikeGame;
-        model.buyGame = buyGame;
-        model.sellGame = sellGame;
 
         function init() {
 
@@ -27,7 +25,7 @@
                 model.isAnon = false;
             }
 
-            gameService.findGameById(model.gameId)
+            questionService.findGameById(model.gameId)
                 .then(function (game) {
                     model.game = game;
                     giantBombService.getGameById(game.externalId)
@@ -37,12 +35,12 @@
                 });
 
             if (!model.isAnon) {
-                gameService.isLiked(model.userId, model.gameId)
+                questionService.isLiked(model.userId, model.gameId)
                     .then(function (value) {
                         model.liked = value;
                     });
 
-                gameService.isOwned(model.userId, model.gameId)
+                questionService.isOwned(model.userId, model.gameId)
                     .then(function (value) {
                         model.owned = value;
                     });
@@ -52,7 +50,7 @@
         init();
 
         function getGameURL(externalId) {
-            gameService.findGameByExternalId(externalId)
+            questionService.findGameByExternalId(externalId)
                 .then(function (game) {
                     $location.url("/game/" + game._id + "/detail");
                 });
@@ -62,7 +60,7 @@
             if (model.isAnon) {
                 $location.url("login");
             } else {
-                gameService.likeGame(model.userId, model.gameId)
+                questionService.likeGame(model.userId, model.gameId)
                     .then(function (game) {
                         model.liked = !model.liked;
                     });
@@ -73,7 +71,7 @@
             if (model.isAnon) {
                 $location.url("login");
             } else {
-                gameService.unLikeGame(model.userId, model.gameId)
+                questionService.unLikeGame(model.userId, model.gameId)
                     .then(function (game) {
                         model.liked = !model.liked;
                     });
