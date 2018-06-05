@@ -25,7 +25,7 @@
                         }
                     }
                     if (model.inventory === null) {
-                        gameService.findGameById(model.gameId)
+                        gameService.findPostById(model.gameId)
                             .then(function (game) {
                                 model.game = game;
                                 model.inventory = {};

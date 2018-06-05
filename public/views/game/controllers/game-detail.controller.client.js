@@ -27,7 +27,7 @@
                 model.isAnon = false;
             }
 
-            gameService.findGameById(model.gameId)
+            gameService.findPostById(model.gameId)
                 .then(function (game) {
                     model.game = game;
                     giantBombService.getGameById(game.externalId)
@@ -54,7 +54,7 @@
         function getGameURL(externalId) {
             gameService.findGameByExternalId(externalId)
                 .then(function (game) {
-                    $location.url("/game/" + game._id + "/detail");
+                    $location.url("/post/" + game._id + "/detail");
                 });
         }
 
@@ -81,7 +81,7 @@
         }
 
         function sellGame() {
-            $location.url("/game/" + model.gameId + "/manage");
+            $location.url("/post/" + model.gameId + "/manage");
         }
 
         function unLikeGame() {

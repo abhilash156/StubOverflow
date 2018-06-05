@@ -16,7 +16,7 @@
             var url = "/api/redirectGB";
             var body = {
                 "requestType": "GET",
-                "requestURL": "/api/search/?query=\"" + searchQuery + "\"&resources=game"
+                "requestURL": "/api/search/?query=\"" + searchQuery + "\"&resources=post"
             };
             return $http.post(url, body).then(successCallback, errorCallback);
         }
@@ -25,7 +25,7 @@
             var url = "/api/redirectGB";
             var body = {
                 "requestType": "GET",
-                "requestURL": "/api/game/3030-" + gameId + "/?"
+                "requestURL": "/api/post/3030-" + gameId + "/?"
             };
             return $http.post(url, body).then(successCallback, errorCallback);
         }

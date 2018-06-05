@@ -18,7 +18,7 @@
         return api;
 
         function createGame(game) {
-            var url = "/api/game";
+            var url = "/api/post";
 
             return $http.post(url, game).then(successCallback, errorCallback);
         }
@@ -54,13 +54,13 @@
         }
 
         function findGameById(gameId) {
-            var url = "/api/game/" + gameId;
+            var url = "/api/post/" + gameId;
 
             return $http.get(url).then(successCallback, errorCallback);
         }
 
         function findGameByExternalId(externalId) {
-            var url = "/api/game?externalId=" + externalId;
+            var url = "/api/post?externalId=" + externalId;
 
 
             return $http.get(url).then(function (response) {
@@ -76,13 +76,13 @@
         }
 
         function updateGame(gameId, game) {
-            var url = "/api/game/" + gameId;
+            var url = "/api/post/" + gameId;
 
             return $http.put(url, game).then(successCallback, errorCallback);
         }
 
         function deleteGame(gameId) {
-            var url = "/api/game/" + gameId;
+            var url = "/api/post/" + gameId;
 
             return $http.delete(url).then(successCallback, errorCallback);
         }

@@ -59,7 +59,7 @@
                     sessionUser: checkLoginStrict
                 }
             })
-            .when("/game/:gameId/manage", {
+            .when("/post/:gameId/manage", {
                 templateUrl: "views/game/templates/game-manage.view.client.html",
                 controller: "gameManageController",
                 controllerAs: "model",
@@ -67,7 +67,7 @@
                     sessionUser: checkLoginStrict
                 }
             })
-            .when("/game/:gameId/detail", {
+            .when("/post/:gameId/detail", {
                 templateUrl: "views/game/templates/game-detail.view.client.html",
                 controller: "gameDetailController",
                 controllerAs: "model",

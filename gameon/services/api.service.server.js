@@ -60,7 +60,7 @@ function testAPI(request, response) {
     //https://www.giantbomb.com/api/game/3030-49973/?api_key=afd6e6694de225fefbbd0ac7c3b9e92244b477f0&format=json
     https.get({
         host: 'www.giantbomb.com',
-        path: "/api/game/3030-49973/?api_key=afd6e6694de225fefbbd0ac7c3b9e92244b477f0&format=json",
+        path: "/api/post/3030-49973/?api_key=afd6e6694de225fefbbd0ac7c3b9e92244b477f0&format=json",
         headers: {'user-agent': 'Mozilla/5.0'}
     }, function (apiResponse) {
         var resultBody = '';
