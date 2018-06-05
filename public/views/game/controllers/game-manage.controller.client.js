@@ -1,6 +1,6 @@
 (function () {
     angular
-        .module("GameOn")
+        .module("StubOverflow")
         .controller("gameManageController", gameManageController);
 
     function gameManageController($routeParams, gameService, $location, sessionUser, userService) {

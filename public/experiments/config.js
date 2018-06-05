@@ -1,5 +1,5 @@
 (function () {
-    angular.module("GameOn")
+    angular.module("StubOverflow")
         .config(configurations);
 
     function configurations($routeProvider) {

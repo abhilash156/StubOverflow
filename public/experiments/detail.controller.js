@@ -1,5 +1,5 @@
 (function () {
-    angular.module("GameOn")
+    angular.module("StubOverflow")
         .controller("detailController", detailController);
 
     function detailController($http) {

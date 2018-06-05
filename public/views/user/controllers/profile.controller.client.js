@@ -1,6 +1,6 @@
 (function () {
     angular
-        .module("GameOn")
+        .module("StubOverflow")
         .controller("profileController", profileController);
 
     function profileController(userService, $location, sessionUser, $routeParams) {

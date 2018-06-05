@@ -1,5 +1,5 @@
 (function () {
-    angular.module("GameOn").factory("questionService", questionService);
+    angular.module("StubOverflow").factory("questionService", questionService);
 
     function questionService($http) {
         var api = {

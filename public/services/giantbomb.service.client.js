@@ -1,5 +1,5 @@
 (function () {
-    angular.module("GameOn")
+    angular.module("StubOverflow")
         .factory("giantBombService", giantBombService);
 
     function giantBombService($http) {

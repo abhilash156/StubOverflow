@@ -1,6 +1,6 @@
 (function () {
     angular
-        .module("GameOn")
+        .module("StubOverflow")
         .controller("homeController", homeController);
 
     function homeController($location, sessionUser, questionService) {

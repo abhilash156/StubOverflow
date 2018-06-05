@@ -1,6 +1,6 @@
 (function () {
     angular
-        .module("GameOn")
+        .module("StubOverflow")
         .controller("questionAddController", questionAddController);
 
     function questionAddController($location, $routeParams, sessionUser, userService, questionService) {

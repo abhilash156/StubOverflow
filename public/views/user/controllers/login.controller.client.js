@@ -1,6 +1,6 @@
 (function () {
     angular
-        .module("GameOn")
+        .module("StubOverflow")
         .controller("loginController", loginController);
 
     function loginController($location, userService, sessionUser) {

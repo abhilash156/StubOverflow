@@ -1,6 +1,6 @@
 (function () {
     angular
-        .module("GameOn")
+        .module("StubOverflow")
         .controller("gameDetailController", gameDetailController);
 
     function gameDetailController($routeParams, gameService, giantBombService, $location, sessionUser) {

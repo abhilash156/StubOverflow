@@ -1,6 +1,6 @@
 (function () {
     angular
-        .module("GameOn")
+        .module("StubOverflow")
         .controller("searchController", searchController);
 
     function searchController($location, $routeParams, giantBombService, gameService, sessionUser, userService) {
