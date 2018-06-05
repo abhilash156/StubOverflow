@@ -1,88 +1,88 @@
 (function () {
     angular.module("GameOn").factory("questionService", questionService);
 
-    function questionService($http, giantBombService) {
+    function questionService($http) {
         var api = {
-            "createGame": createGame,
-            "findGameByExternalId": findGameByExternalId,
-            "isLiked": isLiked,
-            "isOwned": isOwned,
-            "findGameById": findGameById,
-            "updateGame": updateGame,
-            "deleteGame": deleteGame,
-            "likeGame": likeGame,
-            "buyGame": buyGame,
-            "unLikeGame": unLikeGame
+            "createQuestion": createQuestion,
+            // "findQuestionByExternalId": findQuestionByExternalId,
+            // "isLiked": isLiked,
+            // "isOwned": isOwned,
+            "findQuestionById": findQuestionById,
+            "updateQuestion": updateQuestion,
+            "deleteQuestion": deleteQuestion,
+            // "likeQuestion": likeQuestion,
+            // "buyQuestion": buyQuestion,
+            // "unLikeQuestion": unLikeQuestion
         };
 
         return api;
 
-        function createGame(game) {
-            var url = "/api/game";
+        function createQuestion(question) {
+            var url = "/api/question";
 
-            return $http.post(url, game).then(successCallback, errorCallback);
+            return $http.post(url, question).then(successCallback, errorCallback);
         }
 
-        function likeGame(userId, gameId) {
-            var url = "/api/user/" + userId + "/like/" + gameId;
+        // function likeQuestion(userId, questionId) {
+        //     var url = "/api/user/" + userId + "/like/" + questionId;
+        //
+        //     return $http.get(url).then(successCallback, errorCallback);
+        // }
+        //
+        // function buyQuestion(userId, questionId) {
+        //     var url = "/api/user/" + userId + "/buy/" + questionId;
+        //
+        //     return $http.get(url).then(successCallback, errorCallback);
+        // }
+        //
+        // function unLikeQuestion(userId, questionId) {
+        //     var url = "/api/user/" + userId + "/unlike/" + questionId;
+        //
+        //     return $http.get(url).then(successCallback, errorCallback);
+        // }
+        //
+        // function isLiked(userId, questionId) {
+        //     var url = "/api/user/" + userId + "/liked/" + questionId;
+        //
+        //     return $http.get(url).then(successCallback, errorCallback);
+        // }
+        //
+        // function isOwned(userId, questionId) {
+        //     var url = "/api/user/" + userId + "/owned/" + questionId;
+        //
+        //     return $http.get(url).then(successCallback, errorCallback);
+        // }
+
+        function findQuestionById(questionId) {
+            var url = "/api/question/" + questionId;
 
             return $http.get(url).then(successCallback, errorCallback);
         }
 
-        function buyGame(userId, gameId) {
-            var url = "/api/user/" + userId + "/buy/" + gameId;
+        // function findQuestionByExternalId(externalId) {
+        //     var url = "/api/question?externalId=" + externalId;
+        //
+        //
+        //     return $http.get(url).then(function (response) {
+        //         if (response.status === 204) {
+        //             return giantBombService.getQuestionById(externalId)
+        //                 .then(function (questionData) {
+        //                     return createQuestion(giantBombService.getQuestionObject(questionData.results))
+        //                 })
+        //         } else {
+        //             return successCallback(response);
+        //         }
+        //     }, errorCallback);
+        // }
 
-            return $http.get(url).then(successCallback, errorCallback);
+        function updateQuestion(questionId, question) {
+            var url = "/api/question/" + questionId;
+
+            return $http.put(url, question).then(successCallback, errorCallback);
         }
 
-        function unLikeGame(userId, gameId) {
-            var url = "/api/user/" + userId + "/unlike/" + gameId;
-
-            return $http.get(url).then(successCallback, errorCallback);
-        }
-
-        function isLiked(userId, gameId) {
-            var url = "/api/user/" + userId + "/liked/" + gameId;
-
-            return $http.get(url).then(successCallback, errorCallback);
-        }
-
-        function isOwned(userId, gameId) {
-            var url = "/api/user/" + userId + "/owned/" + gameId;
-
-            return $http.get(url).then(successCallback, errorCallback);
-        }
-
-        function findGameById(gameId) {
-            var url = "/api/game/" + gameId;
-
-            return $http.get(url).then(successCallback, errorCallback);
-        }
-
-        function findGameByExternalId(externalId) {
-            var url = "/api/game?externalId=" + externalId;
-
-
-            return $http.get(url).then(function (response) {
-                if (response.status === 204) {
-                    return giantBombService.getGameById(externalId)
-                        .then(function (gameData) {
-                            return createGame(giantBombService.getGameObject(gameData.results))
-                        })
-                } else {
-                    return successCallback(response);
-                }
-            }, errorCallback);
-        }
-
-        function updateGame(gameId, game) {
-            var url = "/api/game/" + gameId;
-
-            return $http.put(url, game).then(successCallback, errorCallback);
-        }
-
-        function deleteGame(gameId) {
-            var url = "/api/game/" + gameId;
+        function deleteQuestion(questionId) {
+            var url = "/api/question/" + questionId;
 
             return $http.delete(url).then(successCallback, errorCallback);
         }
