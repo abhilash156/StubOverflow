@@ -19,7 +19,6 @@
 
         function createQuestion(question) {
             var url = "/api/question";
-
             return $http.post(url, question).then(successCallback, errorCallback);
         }
 

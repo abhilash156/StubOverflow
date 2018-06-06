@@ -14,14 +14,12 @@
         init();
 
         function createQuestion(question) {
-            console.log(question);
             if (question === undefined || question.title === undefined) {
                 model.errorMessage = "Enter all fields!";
             } else {
                 questionService.createQuestion(question)
                     .then(function (question) {
                         question._user = sessionUser._id;
-                        console.log(question);
                         $location.url("#!/question/" + question._id + "/detail");
                     });
             }
