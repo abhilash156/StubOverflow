@@ -20,10 +20,11 @@
             } else {
                 questionService.createQuestion(question)
                     .then(function (question) {
-                        console.log("question" + question);
+                        console.log(question);
                         $location.url("#!/question/" + question._id + "/detail");
                     });
             }
         }
+
     }
 })();

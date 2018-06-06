@@ -10,7 +10,8 @@
             "deleteQuestion": deleteQuestion,
             "likeQuestion": likeQuestion,
             "unLikeQuestion": unLikeQuestion,
-            "getTopQuestions": getTopQuestions
+            "getTopQuestions": getTopQuestions,
+            "findQuestionsByTag" : findQuestionsByTag
         };
 
         return api;
@@ -60,6 +61,11 @@
 
         function getTopQuestions() {
             var url = "/api/questions/top";
+            return $http.get(url).then(successCallback, errorCallback);
+        }
+
+        function findQuestionsByTag(tagId){
+            var url = "/api/questions/tag/" + tagId;
             return $http.get(url).then(successCallback, errorCallback);
         }
 

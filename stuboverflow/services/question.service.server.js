@@ -6,6 +6,7 @@ app.post("/api/question", createQuestion);
 app.get("/api/questions", getAllQuestions);
 app.get("/api/question/:questionId", findQuestionById);
 app.get("/api/questions/top", getTopQuestions);
+app.get("/api/questions/tag/:tagId", findQuestionsByTag);
 // app.get("/api/question", findQuestionByExternalId);
 app.put("/api/question/:questionId", updateQuestion);
 app.delete("/api/question/:questionId", deleteQuestion);
@@ -76,17 +77,13 @@ function deleteQuestion(request, response) {
         });
 }
 
-// function findQuestionByExternalId(request, response) {
-//     var externalId = request.query.externalId;
-//
-//     questionModel.findQuestionByExternalId(externalId)
-//         .then(function (question) {
-//             if (question === null) {
-//                 response.sendStatus(204);
-//             } else {
-//                 response.json(question);
-//             }
-//         }, function (error) {
-//             response.sendStatus(404).error(error);
-//         });
-// }
+function findQuestionsByTag(request, response) {
+    var tag = request.params.tagId;
+
+    questionModel.findQuestionsByTag(tag)
+        .then(function (questions) {
+            response.send(questions);
+        }, function (error) {
+            response.sendStatus(404).error(error);
+        });
+}

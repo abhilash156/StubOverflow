@@ -7,7 +7,6 @@ var questionModel = mongoose.model("QuestionModel", questionSchema);
 require("../models.server");
 
 questionModel.createQuestion = createQuestion;
-// questionModel.findQuestionByExternalId = findQuestionByExternalId;
 questionModel.getAllQuestions = getAllQuestions;
 questionModel.findQuestionById = findQuestionById;
 questionModel.updateQuestion = updateQuestion;
@@ -15,6 +14,8 @@ questionModel.deleteQuestion = deleteQuestion;
 questionModel.getTopQuestions = getTopQuestions;
 questionModel.addComment = addComment;
 questionModel.addUserAnswer = addUserAnswer;
+questionModel.addTag = addTag;
+questionModel.findQuestionsByTag = findQuestionsByTag;
 
 module.exports = questionModel;
 
@@ -30,6 +31,10 @@ function findQuestionById(questionId) {
     return questionModel.findById(questionId)
 }
 
+function findQuestionsByTag(tagId){
+    return questionModel.find({tags: tagId});
+}
+
 function updateQuestion(questionId, question) {
     delete question.dateCreated;
     return questionModel.update({_id: questionId}, {$set: question});
@@ -43,11 +48,6 @@ function getTopQuestions() {
     return questionModel.find();
 }
 
-// function findQuestionByExternalId(externalId) {
-//
-//     return questionModel.findOne({"externalId": externalId});
-// }
-
 function addComment(questionId, commented) {
     return questionModel.findById(questionId)
         .then(function (question) {
@@ -60,6 +60,14 @@ function addUserAnswer(questionId, answer) {
     return questionModel.findById(questionId)
         .then(function (question) {
             question.comment.push(answer);
+            return question.save();
+        })
+}
+
+function addTag(questionId, tagId) {
+    return questionModel.findById(questionId)
+        .then(function (question) {
+            question.tags.push(tagId);
             return question.save();
         })
 }

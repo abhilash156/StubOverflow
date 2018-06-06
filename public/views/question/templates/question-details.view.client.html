@@ -22,7 +22,11 @@
                 <hr>
                 <div class="tag-display">
                     Tags<br>
-                    {{model.questionInfo.tags}}
+                    <ul class="list-group" ng-repeat="tag in model.questionInfo.tags track by $index">
+                        <li class="list-group-item" style="background-color:#D3D3D3">
+                            <a href="#!/?tag={{tag}}">{{tag}}</a>
+                        </li>
+                    </ul>
                 </div>
                 <br><br>
                 <hr>
