@@ -45,7 +45,7 @@ function updateQuestion(questionId, question) {
 }
 
 function deleteQuestion(questionId) {
-   return questionModel.remove({_id: questionId});
+    return questionModel.remove({_id: questionId});
 }
 
 function getTopQuestions() {

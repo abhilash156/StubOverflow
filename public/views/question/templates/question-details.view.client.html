@@ -12,12 +12,12 @@
                     <h3>{{model.questionInfo.title}}</h3>
                 </div><br>
                 <div class="question-user-info" style="text-align: right">
-                    -<a href="/">{{model.questionInfo._user.username}}</a> asked on <i>{{model.questionInfo.dateCreated}}</i>
+                    - <a href="#!/profile/{{model.questionInfo._user.username}}">{{model.questionInfo._user.username}}</a> asked on <i>{{model.questionInfo.dateCreated}}</i>
                 </div>
                 <hr>
                 <div class="delta-component"><br>
                     Description<br>
-                    <div class="display-quesiton" ng-bind-html="model.questionInfo.description">
+                    <div class="display-question" ng-bind-html="model.questionInfo.description">
                     </div>
                 </div>
                 <hr>
