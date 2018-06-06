@@ -7,9 +7,27 @@
         <div class="row">
             <div class="col-xs-1 col-md-2"></div>
             <div class="col-xs-10 col-lg-8 col-md-8">
-                <div class="subheader">
+                <div class="col-xs-6" id="subheader">
                     <h1>Top Questions</h1>
                 </div>
+                <div class="col-xs-6">
+                    <div class="input-group">
+                        <input ng-keyup="$event.keyCode == 13 && model.search(searchText)"
+                               ng-model=" model.searchTerm" type="text" class="form-control" placeholder="Search" style="margin-top: 30px;">
+                        <span class="input-group-btn">
+                        <a href="#!/search?q={{model.searchTerm}}" class="btn btn-default" type="button" style="margin-top: 30px;">
+                        <span class="glyphicon glyphicon-search"></span>
+                        </a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-1 col-md-2"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-1 col-md-2"></div>
+            <div class="col-xs-10 col-lg-8 col-md-8">
                 <div class="delta-top-questions">
                     <ul class="list-group" ng-repeat="cardData in model.topQuestions">
                         <li class="list-group-item">

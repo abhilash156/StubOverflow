@@ -200,7 +200,7 @@ a:hover {
     border-radius: 5px;
 }
 
-.subheader h1 {
+#subheader h1 {
     color: #242729;
     font-size: 20px;
     padding-left: 0;
