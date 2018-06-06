@@ -24,15 +24,18 @@ function createQuestion(question) {
 }
 
 function getAllQuestions() {
-    return questionModel.find();
+    return questionModel.find().populate('_user')
+        .exec();
 }
 
 function findQuestionById(questionId) {
-    return questionModel.findById(questionId)
+    return questionModel.findById(questionId).populate('_user')
+        .exec();
 }
 
 function findQuestionsByTag(tagId){
-    return questionModel.find({tags: tagId});
+    return questionModel.find({tags: tagId}).populate('_user')
+        .exec();
 }
 
 function updateQuestion(questionId, question) {
@@ -45,7 +48,8 @@ function deleteQuestion(gameId) {
 }
 
 function getTopQuestions() {
-    return questionModel.find();
+    return questionModel.find().populate('_user')
+        .exec();
 }
 
 function addComment(questionId, commented) {

@@ -96,7 +96,9 @@
                 alert("Enter some comment!");
                 // model.errorMessage = "Enter all fields!";
             } else {
-                answerService.createAnswer(answer).then().then(function (answer) {
+                answer._creator
+                answerService.createAnswer(answer)
+                    .then(function (answer) {
                     $route.reload();
                 });
             }
