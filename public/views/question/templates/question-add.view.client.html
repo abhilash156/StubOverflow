@@ -24,12 +24,12 @@
                                          ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
                                          ['indent','outdent'],['html']]">
                         </div>
-                        <p ng-bind-html="model.widget.text"></p>
+                        <p ng-bind-html="model.question.description"></p>
                     </div>
                     <hr>
                     <div class="tag-input">
                         <b>Tags</b><br>
-                        <tags-input ng-model="tags" placeholder="at least one tag such as (iOS excel html) max 5 tags"></tags-input>
+                        <tags-input ng-model="model.question.tags" use-strings="true" add-on-space="true" placeholder="at least one tag such as (iOS excel html) max 5 tags"></tags-input>
                     </div>
                 </form>
                 <br>

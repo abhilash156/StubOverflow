@@ -7,7 +7,7 @@ var answerModel = require("../model/answer/answer.model.server");
 
 // http handlers:
 app.get("/api/answer/:answerId", findAnswerById);
-app.get("/api/answer/question/:postId", findAnswersForPost);
+app.get("/api/answer/question/:questionId", findAnswersForQuestion);
 app.get("/api/answer/user/:userId", findAnswersForUser);
 app.post("/api/answer", createAnswer);
 app.get("/api/answer", findAnswerByCredentials);
@@ -48,8 +48,8 @@ function findAnswerById(req, res) {
         });
 }
 
-function findAnswersForPost(req, res) {
-    answerModel.findAnswersForPost(req.params.postId)
+function findAnswersForQuestion(req, res) {
+    answerModel.findAnswersForQuestion(req.params.questionId)
         .then(function (answers) {
             res.json(answers);
         }, function (err) {

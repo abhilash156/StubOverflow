@@ -17,61 +17,59 @@
                 <hr>
                 <div class="tag-display">
                     Tags<br>
-                    Some Tags Here
+                    {{model.questionInfo.tags}}
                 </div>
                 <br><br>
-                <div class="add answer">
-                    <a type="button" onClick="showCommentBox()">
-                        add comment
-                    </a>
-                    <div id="comment" ng-show="hello" class="ng-cloak">
-                        <p>Comments and suggestions:<br>
-                            <textarea ng-model="commentBox" name="comments" rows="5" cols="75"></textarea><br>
-                            <input type="submit" value="submit" ng-click="model.addComment(commentBox)">
-                        </p>
-                    </div>
-                </div>
-                <div class="delta-top-questions">
-                    <ul class="list-group" ng-repeat="comment in model.questionInfo.comments track by (model.questionInfo.questionId + + $index)">
-                        <li class="list-group-item" style="background-color:#D3D3D3">
-                            {{comment}}
-                            <ng-include src="'views/search/templates/comment-view.client.html'"></ng-include>
-                        </li>
-                    </ul>
-                </div>
-                <script type="text/javascript">
-                    function showCommentBox() {
-                        var box = document.getElementById('comment');
-                        box.className = 'visible'
-                    }
-                </script>
-
-                <div class="delta-top-questions">
-                    <ul class="list-group" ng-repeat="answer in model.questionInfo.answers track by $index">
-                        <li class="list-group-item" style="background-color:#D3D3D3">
-                            {{answer}}
-                            <ng-include src="'views/search/templates/answer-view.client.html'"></ng-include>
-                        </li>
-                    </ul>
-                </div>
-
-
+                <!--<div class="add answer">-->
+                    <!--<a type="button" onClick="showCommentBox()">-->
+                        <!--add comment-->
+                    <!--</a>-->
+                    <!--<div id="comment" ng-show="hello" class="ng-cloak">-->
+                        <!--<p>Comments and suggestions:<br>-->
+                            <!--<textarea ng-model="commentBox" name="comments" rows="5" cols="75"></textarea><br>-->
+                            <!--<input type="submit" value="submit" ng-click="model.addComment(commentBox)">-->
+                        <!--</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="delta-top-questions">-->
+                    <!--<ul class="list-group" ng-repeat="comment in model.questionInfo.comments track by (model.questionInfo.questionId + + $index)">-->
+                        <!--<li class="list-group-item" style="background-color:#D3D3D3">-->
+                            <!--{{comment}}-->
+                            <!--<ng-include src="'views/search/templates/comment-view.client.html'"></ng-include>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+                <!--<script type="text/javascript">-->
+                    <!--function showCommentBox() {-->
+                        <!--var box = document.getElementById('comment');-->
+                        <!--box.className = 'visible'-->
+                    <!--}-->
+                <!--</script>-->
                 <hr>
                 <div>
                     <p>Know someone who can answer? Share a link to this question via email, Google+, Twitter, or
                         Facebook.
                     </p>
+                    <div class="delta-top-questions">
+                        <h3>Answers:</h3>
+                        <ul class="list-group" ng-repeat="answer in model.answers track by $index">
+                            <li class="list-group-item" style="background-color:#D3D3D3">
+                                {{answer.text}}
+                                <ng-include src="'views/search/templates/answer-view.client.html'"></ng-include>
+                            </li>
+                        </ul>
+                    </div>
                     <h3>Your Answer</h3>
                 </div>
                 <div class="delta-component"><br>
-                    <div text-angular ng-model="model.question.answer" id="html"
+                    <div text-angular ng-model="model.answer.text" id="html"
                          ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
                                          ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
                                          ['indent','outdent'],['html']]">
                     </div>
                     <p ng-bind-html="model.widget.text"></p>
                 </div>
-                <a class="btn btn-success" type="button" ng-click="model.createAnswer(widget.text)">
+                <a class="btn btn-success" type="button" ng-click="model.addAnswer(model.answer)">
                     <h5 class="delta-inline-block hidden-xs">Post Answer</h5>
                 </a>
             </div>

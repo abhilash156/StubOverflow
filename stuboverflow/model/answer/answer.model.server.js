@@ -7,7 +7,7 @@ answerModel.createAnswer = createAnswer;
 answerModel.findAnswerById = findAnswerById;
 answerModel.updateAnswer = updateAnswer;
 answerModel.deleteAnswer = deleteAnswer;
-answerModel.findAnswersForPost = findAnswersForPost;
+answerModel.findAnswersForQuestion = findAnswersForQuestion;
 answerModel.findAnswersForUser = findAnswersForUser;
 answerModel.findAnswerByCredentials = findAnswerByCredentials;
 module.exports = answerModel;
@@ -22,8 +22,8 @@ function findAnswerById(id) {
         .exec();
 }
 
-function findAnswersForPost(postId) {
-    return answerModel.find({_post: postId}).populate('_user').exec();
+function findAnswersForQuestion(questionId) {
+    return answerModel.find({_question: questionId});
 }
 
 function findAnswersForUser(userId) {

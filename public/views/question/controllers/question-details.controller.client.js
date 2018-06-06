@@ -3,7 +3,7 @@
         .module("StubOverflow")
         .controller("questionDetailsController", questionDetailsController);
 
-    function questionDetailsController($routeParams, questionService, $location, sessionUser) {
+    function questionDetailsController($routeParams, questionService, $location, sessionUser, answerService, $route) {
         var model = this;
 
         model.questionId = $routeParams["questionId"];
@@ -27,7 +27,6 @@
 
             questionService.findQuestionById(model.questionId)
                 .then(function (question) {
-                    console.log(question);
                     model.questionInfo = question;
                 });
 
@@ -37,6 +36,11 @@
                         model.liked = value;
                     });
             }
+
+            answerService.findAnswerByQuestionId(model.questionId)
+                .then((function (answers) {
+                    model.answers = answers;
+                }))
         }
 
         init();
@@ -85,18 +89,16 @@
         }
 
         function addAnswer(answer) {
-            if (answer === undefined) {
+            answer._question = model.questionId;
+            // answer._user = model.userId
+            console.log(answer);
+            if (answer === undefined || answer.text === undefined) {
                 alert("Enter some comment!");
+                // model.errorMessage = "Enter all fields!";
             } else {
-                var answers = model.questionInfo.answers;
-                answers.push(answer);
-                model.questionInfo.answers = answers;
-                questionService.updateQuestion(model.questionId, model.questionInfo)
-                    .then(function (question) {
-                        $location.url("/question/" + model.questionId + "/details");
-                    });
-                var answerBox = document.getElementById("answer");
-                answerBox.className = 'visible'
+                answerService.createAnswer(answer).then().then(function (answer) {
+                    $route.reload();
+                });
             }
         }
     }
