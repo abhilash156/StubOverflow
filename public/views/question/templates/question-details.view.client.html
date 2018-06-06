@@ -1,8 +1,9 @@
 <div class="delta-content">
     <div class="delta-navbar-top">
-        <ng-include src="'views/common/templates/navbar-top.view.client.html'">
+        <ng-include src="'views/common/templates/navbar-top-anon.view.client.html'">
     </div>
     <div class="container-fluid">
+        <p class="delta-home-margin-top"></p>
         <div class="row">
             <!--<div class="visible-lg visible-md col-md-1"></div>-->
             <div class="col-xs-1 col-md-2"></div>
@@ -11,7 +12,7 @@
                     <h3>{{model.questionInfo.title}}</h3>
                 </div><br>
                 <div class="question-user-info" style="text-align: right">
-                    -<a href="/">Saurin Shah</a> asked on<i> 03/06/2018</i>
+                    -<a href="/">{{model.questionInfo._user.username}}</a> asked on <i>{{model.questionInfo.dateCreated}}</i>
                 </div>
                 <hr>
                 <div class="delta-component"><br>
@@ -40,7 +41,7 @@
                             <li class="list-group-item" style="background-color:#D3D3D3">
                                 <p ng-bind-html=answer.text></p>
                                 <div class="question-user-info" style="text-align: right">
-                                    -<a href="/">User Name</a> posted on<i> 03/06/2018</i>
+                                    -<a href="/">{{answer._user.username}}</a> posted on <i>{{model.dateCreated}}</i>
                                 </div>
                             </li>
                         </ul>
@@ -59,8 +60,9 @@
                     <h5 class="delta-inline-block hidden-xs">Post Answer</h5>
                 </a>
             </div>
+            <div class="col-xs-1 col-md-2"></div>
         </div>
     </div>
-    <div class="col-xs-1 col-md-2"></div>
+
 </div>
 

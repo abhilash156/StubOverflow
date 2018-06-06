@@ -25,15 +25,18 @@ function createQuestion(question) {
 }
 
 function getAllQuestions() {
-    return questionModel.find();
+    return questionModel.find().populate('_user')
+        .exec();
 }
 
 function findQuestionById(questionId) {
-    return questionModel.findById(questionId)
+    return questionModel.findById(questionId).populate('_user')
+        .exec();
 }
 
 function findQuestionsByTag(tagId) {
-    return questionModel.find({tags: tagId});
+    return questionModel.find({tags: tagId}).populate('_user')
+        .exec();
 }
 
 function updateQuestion(questionId, question) {
@@ -41,12 +44,13 @@ function updateQuestion(questionId, question) {
     return questionModel.update({_id: questionId}, {$set: question});
 }
 
-function deleteQuestion(gameId) {
-    return questionModel.remove({_id: gameId});
+function deleteQuestion(questionId) {
+   return questionModel.remove({_id: questionId});
 }
 
 function getTopQuestions() {
-    return questionModel.find();
+    return questionModel.find().populate('_user')
+        .exec();
 }
 
 function addComment(questionId, commented) {

@@ -5,7 +5,7 @@ var postSchema = mongoose.Schema({
     description: String,
     viewsCount: String,
     answersCount: String,
-    _creator: {type: mongoose.Schema.Types.ObjectId, ref:'UserModel'},
+    _user: {type: mongoose.Schema.Types.ObjectId, ref:'UserModel'},
     dateCreated: {type: Date, default: Date.now},
     comments: [String],
     tags: [String]

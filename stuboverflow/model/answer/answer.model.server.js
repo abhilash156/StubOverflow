@@ -23,11 +23,13 @@ function findAnswerById(id) {
 }
 
 function findAnswersForQuestion(questionId) {
-    return answerModel.find({_question: questionId});
+    return answerModel.find({_question: questionId}).populate('_user')
+        .exec();
 }
 
 function findAnswersForUser(userId) {
-    return answerModel.find({_user: userId});
+    return answerModel.find({_user: userId}).populate('_user')
+        .exec();
 }
 
 function updateAnswer(answerId, newAnswer) {

@@ -20,6 +20,7 @@
             } else {
                 questionService.createQuestion(question)
                     .then(function (question) {
+                        question._user = sessionUser._id;
                         console.log(question);
                         $location.url("#!/question/" + question._id + "/detail");
                     });
