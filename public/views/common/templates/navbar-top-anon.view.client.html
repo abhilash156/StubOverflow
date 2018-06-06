@@ -23,8 +23,10 @@
                         <span class="fa fa-sign-in"></span>
                         <h5 class="delta-inline-block hidden-xs">Login</h5>
                     </a>
-                    <a class="btn btn-success pull-right" type="button"
-                       style="background-color:#d94185; border-color: #d94185; margin-left: 2px" href="#!/question/new">
+                    <a ng-show="!model.loggedUser" class="btn btn-success pull-right" type="button" style="background-color:#d94185; border-color: #d94185; margin-left: 2px" href="#!/login">
+                        <h5 class="delta-inline-block hidden-xs">Ask Question</h5>
+                    </a>
+                    <a ng-show="model.loggedUser" class="btn btn-success pull-right" type="button" style="background-color:#d94185; border-color: #d94185; margin-left: 2px" href="#!/question/new">
                         <h5 class="delta-inline-block hidden-xs">Ask Question</h5>
                     </a>
                 </div>
