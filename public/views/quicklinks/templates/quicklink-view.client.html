@@ -1,13 +1,25 @@
-<style>
-    table, th, td {
-        border: 1px solid black;
-        border-collapse: collapse;
+<script>
+    function myFunction() {
+        // Declare variables
+        var input, filter, table, tr, td, i;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
     }
-    th, td {
-        padding: 5px;
-        text-align: left;
-    }
-</style>
+</script>
 <div class="delta-content">
     <div class="delta-navbar-top">
         <ng-include src="'views/common/templates/navbar-top-anon.view.client.html'">
@@ -17,66 +29,51 @@
         <div class="row">
             <div class="col-xs-1 col-md-2"></div>
             <div class="col-xs-10 col-lg-8 col-md-8">
-                <table style="width:100%">
+                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by question." style="width: 450px"><br><br>
+                <table class="table table-hover" id="myTable">
                     <tr>
-                        <th>Wiki-Page</th>
+                        <th>Questions</th>
                         <th colspan="2" align="center">Links</th>
                     </tr>
                     <tr>
-                        <td>1</td>
-                        <td>https://wiki.corp.ebay.somethin//</td>
+                        <td>How to get prod access</td>
+                        <td><a href="">https://wiki.corp.ebay.somethin//</a></td>
                     </tr>
                     <tr>
-                        <td>2</td>
-                        <td>https://wiki.corp.ebay.somethin//</td>
+                        <td>How to change user name</td>
+                        <td><a href="">https://wiki.corp.ebay.somethin//</a></td>
                     </tr>
                     <tr>
-                        <td>3</td>
-                        <td>https://wiki.corp.ebay.somethin//</td>
+                        <td>Where is ebay Central</td>
+                        <td><a href="">https://wiki.corp.ebay.somethin//</a></td>
                     </tr>
                     <tr>
-                        <td>4</td>
-                        <td>https://wiki.corp.ebay.somethin//</td>
+                        <td>Where can i find ebay helpline number?</td>
+                        <td><a href="">https://wiki.corp.ebay.somethin//</a></td>
                     </tr>
                     <tr>
-                        <td>5</td>
-                        <td>https://wiki.corp.ebay.somethin//</td>
+                        <td>Where can i find stubtex access</td>
+                        <td><a href="">https://wiki.corp.ebay.somethin//</a></td>
                     </tr>
                     <tr>
-                        <td>6</td>
-                        <td>https://wiki.corp.ebay.somethin//</td>
+                        <td>Question</td>
+                        <td><a href="">https://wiki.corp.ebay.somethin//</a></td>
                     </tr>
                     <tr>
-                        <td>7</td>
-                        <td>https://wiki.corp.ebay.somethin//</td>
+                        <td>Question</td>
+                        <td><a href="">https://wiki.corp.ebay.somethin//</a></td>
                     </tr>
                     <tr>
-                        <td>8</td>
-                        <td>https://wiki.corp.ebay.somethin//</td>
+                        <td>Question</td>
+                        <td><a href="">https://wiki.corp.ebay.somethin//</a></td>
                     </tr>
                     <tr>
-                        <td>9</td>
-                        <td>https://wiki.corp.ebay.somethin//</td>
+                        <td>Question</td>
+                        <td><a href="">https://wiki.corp.ebay.somethin//</a></td>
                     </tr>
                     <tr>
-                        <td>10</td>
-                        <td>https://wiki.corp.ebay.somethin//</td>
-                    </tr>
-                    <tr>
-                        <td>11</td>
-                        <td>https://wiki.corp.ebay.somethin//</td>
-                    </tr>
-                    <tr>
-                        <td>12</td>
-                        <td>https://wiki.corp.ebay.somethin//</td>
-                    </tr>
-                    <tr>
-                        <td>13</td>
-                        <td>https://wiki.corp.ebay.somethin//</td>
-                    </tr>
-                    <tr>
-                        <td>14</td>
-                        <td>https://wiki.corp.ebay.somethin//</td>
+                        <td>QuestionE</td>
+                        <td><a href="">https://wiki.corp.ebay.somethin//</a></td>
                     </tr>
                 </table>
             </div>

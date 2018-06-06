@@ -4,48 +4,59 @@
     </div>
     <div class="container-fluid">
         <div class="row">
-            <div class="visible-lg visible-md col-md-1"></div>
-            <div class="col-xs-12 col-md-10">
-                <div class="row delta-object">
-                    <div class="col-md-3">
-                        <div class="delta-object-sidebar">
-                            <div class="delta-object-image">
-                                <img ng-src="{{ model.gameInfo.image.small_url }}" class="img-responsive" alt="">
-                            </div>
-                            <div class="delta-object-title">
-                                <div class="delta-object-title-name">{{ model.gameInfo.name }}</div>
-                                <div class="delta-object-sub-title">{{ model.gameInfo.developers[0].name }}</div>
-                            </div>
-                            <div class="delta-object-buttons">
-                                <div ng-hide="model.loggedUser.isAdmin" ng-switch="model.liked">
-                                    <div ng-switch-when=false>
-                                        <b>User Name</b>
-                                        <p>Team</p>
-                                    </div>
-                                    <div ng-switch-when=true>
-                                        <p>User Name</p>
-                                        <p>Team</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="delta-object-menu">
-                                <ul class="nav">
-                                    <li class="active">
-                                        <a href="#"><i class="glyphicon glyphicon-home"></i>
-                                            See Profile </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="delta-object-content">
-                            <ng-include src="'views/question/templates/content/question.overview.view.client.html'"></ng-include>
-                        </div>
+            <!--<div class="visible-lg visible-md col-md-1"></div>-->
+            <div class="col-xs-1 col-md-2"></div>
+            <div class="col-xs-10 col-lg-8 col-md-8" style="text-align: left">
+                <div class="question-title">
+                    <h3>{{model.questionInfo.title}}</h3>
+                </div><br>
+                <div class="question-user-info" style="text-align: right">
+                    -<a href="/">Saurin Shah</a> asked on<i> 03/06/2018</i>
+                </div>
+                <hr>
+                <div class="delta-component"><br>
+                    Description<br>
+                    <div class="display-quesiton" ng-bind-html="model.questionInfo.description">
                     </div>
                 </div>
+                <hr>
+                <div class="tag-display">
+                    Tags<br>
+                    {{model.questionInfo.tags}}
+                </div>
+                <br><br>
+                <hr>
+                <div>
+                    <p>Know someone who can answer? Share a link to this question via email, Google+, Twitter, or
+                        Facebook.
+                    </p>
+                    <div class="delta-top-questions">
+                        <h3>Answers:</h3>
+                        <ul class="list-group" ng-repeat="answer in model.answers track by $index">
+                            <li class="list-group-item" style="background-color:#D3D3D3">
+                                <p ng-bind-html=answer.text></p>
+                                <div class="question-user-info" style="text-align: right">
+                                    -<a href="/">User Name</a> posted on<i> 03/06/2018</i>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <h3>Your Answer</h3>
+                </div>
+                <div class="delta-component"><br>
+                    <div text-angular ng-model="model.answer.text" id="html"
+                         ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+                                         ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+                                         ['indent','outdent'],['html']]">
+                    </div>
+                    <p ng-bind-html="model.widget.text"></p>
+                </div>
+                <a class="btn btn-success" type="button" ng-click="model.addAnswer(model.answer)">
+                    <h5 class="delta-inline-block hidden-xs">Post Answer</h5>
+                </a>
             </div>
-            <div class="visible-lg visible-md col-md-1"></div>
         </div>
     </div>
+    <div class="col-xs-1 col-md-2"></div>
 </div>
+

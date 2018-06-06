@@ -222,9 +222,13 @@ a:hover {
     display: inline;
 }
 
-.delta-navbar-username:hover, .delta-navbar-username:focus, .delta-navbar-logo:hover, .delta-navbar-logo:focus {
+.delta-navbar-username:hover, .delta-navbar-username:focus, .delta-navbar-logo:focus {
     color: #FFFFFF;
     background: #0097a7;
+}
+
+.delta-navbar-logo:hover {
+    background-color: #FFFFFF;
 }
 
 .delta-list-icon {

@@ -9,21 +9,22 @@
                     </a>
                     <a class="delta-navbar-logo btn" href="#!/quicklinks">
                         <h5 class="delta-inline-block hidden-xs">Quick-Links</h5></a>
-                    <a class="delta-navbar-logo btn" href="#!/howtos"><h5 class="delta-inline-block hidden-xs">How-Tos</h5></a>
+                    <a class="delta-navbar-logo btn" href="#!/howtos"><h5 class="delta-inline-block hidden-xs">
+                        How-Tos</h5></a>
                 </div>
-                <div class="col-xs-1 pull-right">
-                    <a ng-show="model.loggedUser" class="delta-navbar-username pull-right" href="#!/profile">
+                <div class="col-xs-3 pull-right" style="margin-top: 8px">
+                    <a ng-show="model.loggedUser" class="delta-navbar-username pull-right" href="#!/profile"
+                    style="margin-outside: 1px">
                         <img ng-src="{{model.loggedUser.cover}}" class="delta-navbar-userpic">
                         <h6 class="delta-inline-block hidden-xs">{{model.loggedUser.username}}</h6>
                     </a>
-
-                    <a ng-show="!model.loggedUser" href="#!/login" class="btn btn-success pull-right" style="background-color:#d94185; border-color: #d94185;" type="button">
+                    <a ng-show="!model.loggedUser" href="#!/login" class="btn btn-success pull-right"
+                       style="background-color:#d94185; border-color: #d94185; margin-left: 2px">
                         <span class="fa fa-sign-in"></span>
                         <h5 class="delta-inline-block hidden-xs">Login</h5>
                     </a>
-                </div>
-                <div class="col-xs-1 pull-right">
-                    <a class="btn btn-success pull-right" type="button" style="background-color:#d94185; border-color: #d94185;" href="#!/question/new">
+                    <a class="btn btn-success pull-right" type="button"
+                       style="background-color:#d94185; border-color: #d94185; margin-left: 2px" href="#!/question/new">
                         <h5 class="delta-inline-block hidden-xs">Ask Question</h5>
                     </a>
                 </div>

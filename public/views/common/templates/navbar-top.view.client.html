@@ -8,7 +8,7 @@
                     </a>
                 </div>
                 <div class="col-xs-8">
-                    <div class="input-group">
+                    <div class="input-group" style="margin-top: 8px">
                         <input ng-keyup="$event.keyCode == 13 && model.search(searchText)"
                                ng-model=" model.searchTerm" type="text" class="form-control" placeholder="Search">
                         <span class="input-group-btn">
@@ -18,13 +18,14 @@
                     </span>
                     </div>
                 </div>
-                <div class="col-xs-1 pull-right">
+                <div class="col-xs-1 pull-right" style="margin-top: 8px">
                     <a ng-show="model.loggedUser" class="delta-navbar-username pull-right" href="#!/profile">
                         <img ng-src="{{model.loggedUser.cover}}" class="delta-navbar-userpic">
                         <h6 class="delta-inline-block hidden-xs">{{model.loggedUser.username}}</h6>
                     </a>
 
-                    <a ng-show="!model.loggedUser" href="#!/login" style="background-color:#d94185; border-color: #d94185;" class="btn btn-success pull-right" type="button">
+                    <a ng-show="!model.loggedUser" href="#!/login" style="background-color:#d94185; border-color: #d94185;" class="btn btn-success pull-right" type="button"
+                       style="margin-top: 8px">
                         <span class="fa fa-sign-in"></span>
                         <h5 class="delta-inline-block hidden-xs">Login</h5>
                     </a>
