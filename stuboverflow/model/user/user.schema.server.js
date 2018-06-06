@@ -7,14 +7,10 @@ var userSchema = mongoose.Schema({
     lastName: String,
     email: String,
     cover: String,
-    userType: {type: String, enum: ['PLAYER', 'SELLER', 'ADMIN'], default: "PLAYER"},
-    games: [{type: mongoose.Schema.Types.ObjectId, ref: "GameModel"}],
-    inventory: [{
-        _game: {type: mongoose.Schema.Types.ObjectId, ref: "GameModel"},
-        quantity: String,
-        price: String
-    }],
-    liked: [{type: mongoose.Schema.Types.ObjectId, ref: "GameModel"}],
+    userType: {type: String, enum: ['PLAYER', 'ADMIN'], default: "PLAYER"},
+    askedQuestions: [{type: mongoose.Schema.Types.ObjectId, ref: "QuestionModel"}],
+    answeredQuestions: [{type: mongoose.Schema.Types.ObjectId, ref: "QuestionModel"}],
+    upvotedQuestions: [{type: mongoose.Schema.Types.ObjectId, ref: "QuestionModel"}],
     followers: [{type: mongoose.Schema.Types.ObjectId, ref: "UserModel"}],
     following: [{type: mongoose.Schema.Types.ObjectId, ref: "UserModel"}],
     google: {

@@ -10,13 +10,13 @@
         model.loggedUser = sessionUser;
         model.contentType = 'PROFILE';
         model.followed = false;
-        model.viewGames = null;
+        model.viewQuestions = null;
         model.viewUsers = null;
-        model.ownedGames = null;
-        model.likedGames = null;
+        model.askedQuestions = null;
+        model.upvotedQuestions = null;
         model.followers = null;
         model.following = null;
-        model.inventory = null;
+        model.answers = null;
         model.isLoggedUser = false;
 
         model.updateUser = updateUser;
@@ -39,7 +39,7 @@
                         if (model.loggedUser.isAdmin) {
                             model.contentType = 'PROFILE';
                         } else {
-                            model.contentType = 'GAMES';
+                            model.contentType = 'QUESTIONS';
                         }
                         model.isLoggedUser = false;
                         model.userId = user._id;
@@ -51,27 +51,27 @@
                             .then(function (value) {
                                 model.followed = value;
                             });
-                        loadUserGames();
-                        model.viewGames = model.ownedGames;
+                        loadUserQuestions();
+                        model.viewQuestions = model.askedQuestions;
                     });
             }
         }
 
         init();
 
-        function loadUserGames() {
-            userService.getOwnedGamesByUser(model.userId)
-                .then(function (games) {
-                    model.ownedGames = games;
-                    model.viewGames = model.ownedGames;
+        function loadUserQuestions() {
+            userService.getAskedQuestionsByUser(model.userId)
+                .then(function (questions) {
+                    model.askedQuestions = questions;
+                    model.viewQuestions = model.askedQuestions;
                 });
         }
 
-        function loadLikedGames() {
-            userService.getLikedGamesByUser(model.userId)
-                .then(function (games) {
-                    model.likedGames = games;
-                    model.viewGames = model.likedGames;
+        function loadUpvotedQuestions() {
+            userService.getUpvotedQuestionsByUser(model.userId)
+                .then(function (questions) {
+                    model.upvotedQuestions = questions;
+                    model.viewQuestions = model.upvotedQuestions;
                 });
         }
 
@@ -91,11 +91,11 @@
                 });
         }
 
-        function loadInventory() {
-            userService.getInventoryByUser(model.userId)
+        function loadAnswers() {
+            userService.getAnswersByUser(model.userId)
                 .then(function (users) {
-                    model.inventory = users;
-                    model.viewGames = model.inventory;
+                    model.answers = users;
+                    model.viewQuestions = model.answers;
                 });
         }
 
@@ -124,18 +124,18 @@
             switch (contentType) {
                 case 'PROFILE':
                     break;
-                case 'GAMES':
-                    if (model.ownedGames === null) {
-                        loadUserGames();
+                case 'QUESTIONS':
+                    if (model.askedQuestions === null) {
+                        loadUserQuestions();
                     } else {
-                        model.viewGames = model.ownedGames;
+                        model.viewQuestions = model.askedQuestions;
                     }
                     break;
-                case 'LIKED':
-                    if (model.likedGames === null) {
-                        loadLikedGames();
+                case 'UPVOTED':
+                    if (model.upvotedQuestions === null) {
+                        loadUpvotedQuestions();
                     } else {
-                        model.viewGames = model.likedGames;
+                        model.viewQuestions = model.upvotedQuestions;
                     }
                     break;
                 case 'FOLLOWERS':
@@ -155,11 +155,11 @@
                 case 'USERS':
                     loadAllUsers();
                     break;
-                case 'INVENTORY':
-                    if (model.inventory === null) {
-                        loadInventory();
+                case 'ANSWERS':
+                    if (model.answers === null) {
+                        loadAnswers();
                     } else {
-                        model.viewGames = model.inventory;
+                        model.viewQuestions = model.answers;
                     }
                     break;
             }

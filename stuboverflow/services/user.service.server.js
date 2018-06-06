@@ -23,24 +23,24 @@ app.get("/api/user/:userId", findUserById);
 app.put("/api/user/:userId", updateUser);
 app.delete("/api/user/:userId", deleteUser);
 
-app.get("/api/user/:userId/liked", findLikedGamesByUser);
-app.get("/api/user/:userId/liked/:gameId", isLiked);
-app.get("/api/user/:userId/owned", findOwnedGamesByUser);
+app.get("/api/user/:userId/upvoted", findUpvotedQuestionsByUser);
+app.get("/api/user/:userId/upvoted/:questionId", isUpvoted);
+app.get("/api/user/:userId/asked", findAskedQuestionsByUser);
 
-app.get("/api/user/:userId/inventory", getInventoryByUser);
-app.delete("/api/user/:userId/inventory/:gameId", removeInventory);
-app.post("/api/user/:userId/inventory", upsertInventory);
+app.get("/api/user/:userId/answers", getAnswersByUser);
+app.delete("/api/user/:userId/answers/:questionId", removeAnswers);
+app.post("/api/user/:userId/answers", upsertAnswers);
 
 
-app.get("/api/user/:userId/owned/:gameId", isOwned);
+app.get("/api/user/:userId/asked/:questionId", isAsked);
 app.get("/api/user/:userId/following", getFollowing);
 app.get("/api/user/:userId/following/:userId2", isFollowing);
 app.get("/api/user/:userId/followers", getFollowers);
 app.get("/api/user/:userId/followers/:userId2", isFollower);
 
-app.get("/api/user/:userId/buy/:gameId", buyGame);
-app.get("/api/user/:userId/like/:gameId", likeGame);
-app.get("/api/user/:userId/unlike/:gameId", unLikeGame);
+app.get("/api/user/:userId/buy/:questionId", buyQuestion);
+app.get("/api/user/:userId/like/:questionId", likeQuestion);
+app.get("/api/user/:userId/unlike/:questionId", unLikeQuestion);
 app.get("/api/user/:userId/follow/:userId2", followUser);
 app.get("/api/user/:userId/unfollow/:userId2", unFollowUser);
 app.get('/google/callback', passport.authenticate('google', {
@@ -265,37 +265,37 @@ function deleteUser(request, response) {
         });
 }
 
-function findOwnedGamesByUser(request, response) {
+function findAskedQuestionsByUser(request, response) {
     var userId = request.params.userId;
 
-    userModel.findUserById(userId).populate("games")
+    userModel.findUserById(userId).populate("questions")
         .exec()
         .then(function (user) {
-            response.json(user.games);
+            response.json(user.questions);
         }, function (error) {
             response.sendStatus(404).error(error);
         });
 }
 
-function getInventoryByUser(request, response) {
+function getAnswersByUser(request, response) {
     var userId = request.params.userId;
 
-    userModel.findUserById(userId).populate('inventory._game')
+    userModel.findUserById(userId).populate('answers._question')
         .exec()
         .then(function (user) {
-            response.json(user.inventory);
+            response.json(user.answers);
         }, function (error) {
             response.sendStatus(404).error(error);
         });
 }
 
-function findLikedGamesByUser(request, response) {
+function findUpvotedQuestionsByUser(request, response) {
     var userId = request.params.userId;
 
-    userModel.findUserById(userId).populate("liked")
+    userModel.findUserById(userId).populate("upvoted")
         .exec()
         .then(function (user) {
-            response.json(user.liked);
+            response.json(user.upvoted);
         }, function (error) {
             response.sendStatus(404).error(error);
         });
@@ -345,13 +345,13 @@ function isFollower(request, response) {
         });
 }
 
-function isLiked(request, response) {
+function isUpvoted(request, response) {
     var userId = request.params.userId;
-    var gameId = request.params.gameId;
+    var questionId = request.params.questionId;
 
     userModel.findUserById(userId)
         .then(function (user) {
-            if (user.liked.indexOf(gameId) >= 0) {
+            if (user.upvoted.indexOf(questionId) >= 0) {
                 response.send(true);
             } else {
                 response.send(false);
@@ -361,13 +361,13 @@ function isLiked(request, response) {
         });
 }
 
-function isOwned(request, response) {
+function isAsked(request, response) {
     var userId = request.params.userId;
-    var gameId = request.params.gameId;
+    var questionId = request.params.questionId;
 
     userModel.findUserById(userId)
         .then(function (user) {
-            if (user.games.indexOf(gameId) >= 0) {
+            if (user.questions.indexOf(questionId) >= 0) {
                 response.send(true);
             } else {
                 response.send(false);
@@ -377,11 +377,11 @@ function isOwned(request, response) {
         });
 }
 
-function likeGame(request, response) {
+function likeQuestion(request, response) {
     var userId = request.params.userId;
-    var gameId = request.params.gameId;
+    var questionId = request.params.questionId;
 
-    userModel.addLike(userId, gameId)
+    userModel.addLike(userId, questionId)
         .then(function (user) {
             response.send(user);
         }, function (error) {
@@ -389,11 +389,11 @@ function likeGame(request, response) {
         });
 }
 
-function buyGame(request, response) {
+function buyQuestion(request, response) {
     var userId = request.params.userId;
-    var gameId = request.params.gameId;
+    var questionId = request.params.questionId;
 
-    userModel.addGame(userId, gameId)
+    userModel.addQuestion(userId, questionId)
         .then(function (user) {
             response.send(user);
         }, function (error) {
@@ -401,11 +401,11 @@ function buyGame(request, response) {
         });
 }
 
-function unLikeGame(request, response) {
+function unLikeQuestion(request, response) {
     var userId = request.params.userId;
-    var gameId = request.params.gameId;
+    var questionId = request.params.questionId;
 
-    userModel.removeLike(userId, gameId)
+    userModel.removeLike(userId, questionId)
         .then(function (user) {
             response.send(user);
         }, function (error) {
@@ -468,11 +468,11 @@ function searchUsers(request, response) {
         });
 }
 
-function removeInventory(request, response) {
+function removeAnswers(request, response) {
     var userId = request.params.userId;
-    var gameId = request.params.gameId;
+    var questionId = request.params.questionId;
 
-    return userModel.removeInventory(userId, gameId)
+    return userModel.removeAnswers(userId, questionId)
         .then(function () {
             response.sendStatus(200);
         }, function (error) {
@@ -480,11 +480,11 @@ function removeInventory(request, response) {
         });
 }
 
-function upsertInventory(request, response) {
+function upsertAnswers(request, response) {
     var userId = request.params.userId;
-    var inventory = request.body;
+    var answers = request.body;
 
-    userModel.upsertInventory(userId, inventory)
+    userModel.upsertAnswers(userId, answers)
         .then(function (users) {
             response.send(users);
         }, function (error) {

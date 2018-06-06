@@ -12,18 +12,18 @@ userModel.findUserByUsername = findUserByUsername;
 userModel.findUserByCredentials = findUserByCredentials;
 userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
-userModel.addGame = addGame;
-userModel.addLike = addLike;
-userModel.removeGame = removeGame;
-userModel.removeLike = removeLike;
+userModel.addQuestion = addQuestion;
+userModel.addUpvote = addUpvote;
+userModel.removeQuestion = removeQuestion;
+userModel.removeUpvote = removeUpvote;
 userModel.addFollow = addFollow;
 userModel.removeFollow = removeFollow;
 userModel.getAllUsers = getAllUsers;
 userModel.findUserByGoogleId = findUserByGoogleId;
 userModel.findUserByFacebookId = findUserByFacebookId;
 userModel.searchUsers = searchUsers;
-userModel.removeInventory = removeInventory;
-userModel.upsertInventory = upsertInventory;
+userModel.removeAnsweredQuestions = removeAnsweredQuestions;
+userModel.upsertAnsweredQuestions = upsertAnsweredQuestions;
 
 module.exports = userModel;
 
@@ -31,72 +31,72 @@ function createUser(user) {
     return userModel.create(user);
 }
 
-function addGame(userId, gameId) {
+function addQuestion(userId, questionId) {
     return userModel.findById(userId)
         .then(function (user) {
-            user.games.push(gameId);
+            user.askedQuestions.push(questionId);
             return user.save();
         })
 }
 
-function removeGame(userId, gameId) {
+function removeQuestion(userId, questionId) {
     return userModel.findById(userId)
         .then(function (user) {
-            var index = user.games.indexOf(gameId);
-            user.games.splice(index, 1);
+            var index = user.askedQuestions.indexOf(questionId);
+            user.askedQuestions.splice(index, 1);
             return user.save();
         });
 }
 
-function removeInventory(userId, gameId) {
+function removeAnsweredQuestions(userId, questionId) {
     return userModel.findById(userId)
         .then(function (user) {
-            var inventory = user.inventory;
+            var answeredQuestions = user.answeredQuestions;
             var index = -1;
-            for (var i = 0; i < inventory.length; i++) {
-                if (inventory[i]._game == gameId) {
+            for (var i = 0; i < answeredQuestions.length; i++) {
+                if (answeredQuestions[i]._question == questionId) {
                     index = i;
                     break;
                 }
             }
-            user.inventory.splice(index, 1);
+            user.answeredQuestions.splice(index, 1);
             return user.save();
         });
 }
 
-function upsertInventory(userId, updatedInventory) {
+function upsertAnsweredQuestions(userId, updatedAnsweredQuestions) {
     return userModel.findById(userId)
         .then(function (user) {
-            var inventory = user.inventory;
+            var answeredQuestions = user.answeredQuestions;
             var index = -1;
-            for (var i = 0; i < inventory.length; i++) {
-                if (inventory[i]._game == updatedInventory._game) {
+            for (var i = 0; i < answeredQuestions.length; i++) {
+                if (answeredQuestions[i]._question == updatedAnsweredQuestions._question) {
                     index = i;
                     break;
                 }
             }
             if (index === -1) {
-                user.inventory.push(updatedInventory);
+                user.answeredQuestions.push(updatedAnsweredQuestions);
             } else {
-                user.inventory[index] = updatedInventory;
+                user.answeredQuestions[index] = updatedAnsweredQuestions;
             }
             return user.save();
         });
 }
 
-function addLike(userId, gameId) {
+function addUpvote(userId, questionId) {
     return userModel.findById(userId)
         .then(function (user) {
-            user.liked.push(gameId);
+            user.upvoted.push(questionId);
             return user.save();
         })
 }
 
-function removeLike(userId, gameId) {
+function removeUpvote(userId, questionId) {
     return userModel.findById(userId)
         .then(function (user) {
-            var index = user.liked.indexOf(gameId);
-            user.liked.splice(index, 1);
+            var index = user.upvotedQuestions.indexOf(questionId);
+            user.upvotedQuestions.splice(index, 1);
             return user.save();
         })
 }

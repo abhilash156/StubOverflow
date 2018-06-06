@@ -6,9 +6,9 @@
             "createUser": createUser,
             "findUserById": findUserById,
             "findUserByUsername": findUserByUsername,
-            "getOwnedGamesByUser": getOwnedGamesByUser,
-            "getInventoryByUser": getInventoryByUser,
-            "getLikedGamesByUser": getLikedGamesByUser,
+            "getAskedQuestionsByUser": getAskedQuestionsByUser,
+            "getAnswersByUser": getAnswersByUser,
+            "getUpvotedQuestionsByUser": getUpvotedQuestionsByUser,
             "login": login,
             "checkLogin": checkLogin,
             "logout": logout,
@@ -22,18 +22,18 @@
             "isFollower": isFollower,
             "getUsers": getUsers,
             "searchUsers": searchUsers,
-            "upsertInventory": upsertInventory,
-            "removeInventory": removeInventory
+            "upsertAnswers": upsertAnswers,
+            "removeAnswers": removeAnswers
         };
         return api;
 
-        function upsertInventory(userId, inventory) {
-            var url = "/api/user/" + userId + "/inventory";
-            return $http.post(url, inventory).then(successCallback, errorCallback);
+        function upsertAnswers(userId, answers) {
+            var url = "/api/user/" + userId + "/answers";
+            return $http.post(url, answers).then(successCallback, errorCallback);
         }
 
-        function removeInventory(userId, gameId) {
-            var url = "/api/user/" + userId + "/inventory/" + gameId;
+        function removeAnswers(userId, questionId) {
+            var url = "/api/user/" + userId + "/answers/" + questionId;
 
             return $http.delete(url).then(successCallback, errorCallback);
         }
@@ -80,20 +80,20 @@
                 });
         }
 
-        function getOwnedGamesByUser(userId) {
-            var url = "/api/user/" + userId + "/owned";
+        function getAskedQuestionsByUser(userId) {
+            var url = "/api/user/" + userId + "/asked";
 
             return $http.get(url).then(successCallback, errorCallback);
         }
 
-        function getInventoryByUser(userId) {
-            var url = "/api/user/" + userId + "/inventory";
+        function getAnswersByUser(userId) {
+            var url = "/api/user/" + userId + "/answers";
 
             return $http.get(url).then(successCallback, errorCallback);
         }
 
-        function getLikedGamesByUser(userId) {
-            var url = "/api/user/" + userId + "/liked";
+        function getUpvotedQuestionsByUser(userId) {
+            var url = "/api/user/" + userId + "/upvoted";
 
             return $http.get(url).then(successCallback, errorCallback);
         }
