@@ -91,22 +91,6 @@
                     sessionUser: checkLoginStrict
                 }
             })
-            .when("/question/:gameId/manage", {
-                templateUrl: "views/game/templates/game-manage.view.client.html",
-                controller: "gameManageController",
-                controllerAs: "model",
-                resolve: {
-                    sessionUser: checkLoginStrict
-                }
-            })
-            .when("/question/:gameId/detail", {
-                templateUrl: "views/game/templates/game-detail.view.client.html",
-                controller: "gameDetailController",
-                controllerAs: "model",
-                resolve: {
-                    sessionUser: checkLogin
-                }
-            })
             .when("/admin/create", {
                 templateUrl: "views/user/templates/register.view.client.html",
                 controller: "registerController",

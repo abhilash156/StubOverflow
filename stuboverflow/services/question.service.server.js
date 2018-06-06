@@ -11,6 +11,7 @@ app.get("/api/questions/tag/:tagId", findQuestionsByTag);
 app.put("/api/question/:questionId", updateQuestion);
 app.delete("/api/question/:questionId", deleteQuestion);
 //app.post("/api/question", addComment);
+app.get("/api/searchQuestions", searchQuestions);
 
 function createQuestion(request, response) {
     var question = request.body;
@@ -83,6 +84,16 @@ function findQuestionsByTag(request, response) {
     questionModel.findQuestionsByTag(tag)
         .then(function (questions) {
             response.send(questions);
+        }, function (error) {
+            response.sendStatus(404).error(error);
+        });
+}
+
+function searchQuestions(request, response) {
+    var searchTerm = request.query.searchTerm;
+    questionModel.searchQuestions(searchTerm)
+        .then(function (users) {
+            response.send(users);
         }, function (error) {
             response.sendStatus(404).error(error);
         });

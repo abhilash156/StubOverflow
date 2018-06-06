@@ -11,6 +11,7 @@
             "likeQuestion": likeQuestion,
             "unLikeQuestion": unLikeQuestion,
             "getTopQuestions": getTopQuestions,
+            "searchQuestions": searchQuestions,
             "findQuestionsByTag" : findQuestionsByTag
         };
 
@@ -61,6 +62,12 @@
 
         function getTopQuestions() {
             var url = "/api/questions/top";
+            return $http.get(url).then(successCallback, errorCallback);
+        }
+
+        function searchQuestions(searchTerm) {
+            var url = "/api/searchQuestions?searchTerm=" + searchTerm;
+
             return $http.get(url).then(successCallback, errorCallback);
         }
 

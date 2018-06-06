@@ -3,22 +3,22 @@
         .module("StubOverflow")
         .controller("searchController", searchController);
 
-    function searchController($location, $routeParams, giantBombService, gameService, sessionUser, userService) {
+    function searchController($location, $routeParams, questionService, sessionUser, userService) {
         var model = this;
-        model.searchGames = searchGames;
-        model.getGameURL = getGameURL;
+        model.search = search;
+        model.getQuestionURL = getQuestionURL;
         model.searchTerm = $routeParams["q"];
         model.loggedUser = sessionUser;
 
 
         function init() {
-            searchGames();
+            search();
         }
 
         init();
 
-        function searchGames() {
-            giantBombService.searchGames(model.searchTerm)
+        function search() {
+            questionService.searchQuestions(model.searchTerm)
                 .then(function (response) {
                     model.searchResult = response.results;
                 });
@@ -28,11 +28,8 @@
                 });
         }
 
-        function getGameURL(externalId) {
-            gameService.findGameByExternalId(externalId)
-                .then(function (game) {
-                    $location.url("/question/" + game._id + "/detail");
-                });
+        function getQuestionURL(questionId) {
+            $location.url("/question/" + questionId + "/detail");
         }
     }
 })();

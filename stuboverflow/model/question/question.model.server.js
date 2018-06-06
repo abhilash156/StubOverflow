@@ -8,6 +8,7 @@ require("../models.server");
 
 questionModel.createQuestion = createQuestion;
 questionModel.getAllQuestions = getAllQuestions;
+questionModel.searchQuestions = searchQuestions;
 questionModel.findQuestionById = findQuestionById;
 questionModel.updateQuestion = updateQuestion;
 questionModel.deleteQuestion = deleteQuestion;
@@ -31,7 +32,7 @@ function findQuestionById(questionId) {
     return questionModel.findById(questionId)
 }
 
-function findQuestionsByTag(tagId){
+function findQuestionsByTag(tagId) {
     return questionModel.find({tags: tagId});
 }
 
@@ -41,7 +42,7 @@ function updateQuestion(questionId, question) {
 }
 
 function deleteQuestion(gameId) {
-   return questionModel.remove({_id: gameId});
+    return questionModel.remove({_id: gameId});
 }
 
 function getTopQuestions() {
@@ -70,5 +71,14 @@ function addTag(questionId, tagId) {
             question.tags.push(tagId);
             return question.save();
         })
+}
+
+function searchQuestions(searchTerm) {
+    searchTerm = new RegExp(["^", searchTerm, "$"].join(""), "i");
+    var searchArray = [
+        {"title": searchTerm},
+        {"tags": searchTerm}
+    ];
+    return questionModel.find().or(searchArray);
 }
 
